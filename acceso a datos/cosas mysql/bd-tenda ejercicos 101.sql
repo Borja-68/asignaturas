@@ -1,0 +1,13 @@
+-- select * from tendas;
+SELECT * FROM tenda.artigos;
+select prv_nome from provedores;
+select distinct clt_poboacion from clientes order by 1;
+select art_pv, art_pv+(art_pv*0.10) from artigos;
+select clt_id,clt_nome,clt_apelidos from clientes where clt_poboacion="Madrid";
+select art_codigo,art_nome,art_peso from artigos where art_peso>500;
+select art_codigo,art_nome,art_pc,art_pv from artigos where art_pv>=art_pc*2;
+SELECT clt_desconto, clt_nome, clt_apelidos, clt_poboacion,clt_desconto FROM clientes where (clt_poboacion in ("Asturias" , "Valencia")) and (clt_desconto>=2 or clt_desconto=0);  
+SELECT art_nome,art_color FROM `tenda`.`artigos`where art_color="NEGRO" and art_peso>5000;
+SELECT art_nome,art_color FROM `tenda`.`artigos`where art_color!="NEGRO" and art_peso<5000;
+select art_nome,art_color from artigos where art_color is Null;
+SELECT clt_nome FROM `tenda`.`clientes` where clt_nome like 'B___A';

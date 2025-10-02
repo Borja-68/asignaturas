@@ -1,0 +1,9 @@
+package ejercicio306;
+
+
+public class Modelo {
+    
+    // TODO: DEFINICIÓN DE LA CONEXIÓN CON LA BASE DE DATOS
+    //TODO: CREAR FUNCIÓN PARA LA OBTENCIÓN DE LOS RESULTADOS DE LA CONSULTA
+    
+}
