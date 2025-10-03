@@ -40,8 +40,9 @@ public class NewJFrame extends javax.swing.JFrame {
         botonSuma = new javax.swing.JButton();
         botonBorrao = new javax.swing.JButton();
         botonMultli = new javax.swing.JButton();
-        botonMultli2 = new javax.swing.JButton();
-        botonElevado1 = new javax.swing.JButton();
+        botonDivision = new javax.swing.JButton();
+        botonElevado = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         botonMultli1.setText("*");
         botonMultli1.addActionListener(new java.awt.event.ActionListener() {
@@ -93,19 +94,22 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         });
 
-        botonMultli2.setText("*");
-        botonMultli2.addActionListener(new java.awt.event.ActionListener() {
+        botonDivision.setText("/");
+        botonDivision.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonMultli2ActionPerformed(evt);
+                botonDivisionActionPerformed(evt);
             }
         });
 
-        botonElevado1.setText("^");
-        botonElevado1.addActionListener(new java.awt.event.ActionListener() {
+        botonElevado.setText("^");
+        botonElevado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonElevado1ActionPerformed(evt);
+                botonElevadoActionPerformed(evt);
             }
         });
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel4.setText("Calculadora");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -115,7 +119,7 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(botonMultli2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(botonDivision, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(22, 22, 22)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -136,20 +140,26 @@ public class NewJFrame extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(botonMultli, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(botonResta, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(botonElevado1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(botonElevado, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(207, 207, 207)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(61, 61, 61)
+                        .addGap(17, 17, 17)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
                             .addComponent(textPrimerNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(botonResta, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -160,7 +170,7 @@ public class NewJFrame extends javax.swing.JFrame {
                     .addComponent(textSegundoNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(8, 8, 8)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonMultli2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonDivision, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonMultli, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -172,7 +182,7 @@ public class NewJFrame extends javax.swing.JFrame {
                         .addGap(37, 37, 37)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(botonBorrao, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(botonElevado1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(botonElevado, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(32, 32, 32))
         );
 
@@ -224,15 +234,20 @@ public class NewJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_botonMultli1ActionPerformed
 
-    private void botonMultli2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMultli2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_botonMultli2ActionPerformed
+    private void botonDivisionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonDivisionActionPerformed
+       int numero1=Integer.parseInt(textPrimerNumero.getText());
+         int numero2=Integer.parseInt(textSegundoNumero.getText());
+         if(numero2==0)textResultado.setText("resulatdo es: :/"); // TODO add your handling code here:
+         else{
+         textResultado.setText("resulatdo es: "+(numero1/numero2));
+         }// TODO add your handling code here:
+    }//GEN-LAST:event_botonDivisionActionPerformed
 
-    private void botonElevado1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonElevado1ActionPerformed
+    private void botonElevadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonElevadoActionPerformed
         int numero1=Integer.parseInt(textPrimerNumero.getText());
          int numero2=Integer.parseInt(textSegundoNumero.getText());
          textResultado.setText("resulatdo es: "+(int)(Math.pow(numero1, numero2)));
-    }//GEN-LAST:event_botonElevado1ActionPerformed
+    }//GEN-LAST:event_botonElevadoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -261,15 +276,16 @@ public class NewJFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonBorrao;
-    private javax.swing.JButton botonElevado1;
+    private javax.swing.JButton botonDivision;
+    private javax.swing.JButton botonElevado;
     private javax.swing.JButton botonMultli;
     private javax.swing.JButton botonMultli1;
-    private javax.swing.JButton botonMultli2;
     private javax.swing.JButton botonResta;
     private javax.swing.JButton botonSuma;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField textPrimerNumero;
     private javax.swing.JTextField textResultado;
