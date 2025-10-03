@@ -259,7 +259,7 @@ public class NewJFrame extends javax.swing.JFrame {
          int numero2=Integer.parseInt(textSegundoNumero.getText());
          if(numero2==0)textResultado.setText("Resulatdo es: :/"); // TODO add your handling code here:
          else{
-         textResultado.setText("Resulatdo es: "+(numero1/numero2));
+         textResultado.setText("Resulatdo es: "+((double)numero1/(double)numero2));
          }// TODO add your handling code here:
     }//GEN-LAST:event_botonDivisionActionPerformed
 
