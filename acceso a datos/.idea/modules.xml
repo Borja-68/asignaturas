@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/acceso a datos.iml" filepath="$PROJECT_DIR$/acceso a datos.iml" />
+      <module fileurl="file://$PROJECT_DIR$/baseDeDatos/baseDeDatos.iml" filepath="$PROJECT_DIR$/baseDeDatos/baseDeDatos.iml" />
+      <module fileurl="file://$PROJECT_DIR$/baseFormula/baseFormula.iml" filepath="$PROJECT_DIR$/baseFormula/baseFormula.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cosas jav/contactos/contactos.iml" filepath="$PROJECT_DIR$/cosas jav/contactos/contactos.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ejercicio502/ejercicio502.iml" filepath="$PROJECT_DIR$/ejercicio502/ejercicio502.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cosas jav/untitled/untitled.iml" filepath="$PROJECT_DIR$/cosas jav/untitled/untitled.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cosas jav/untitled1/untitled1.iml" filepath="$PROJECT_DIR$/cosas jav/untitled1/untitled1.iml" />
+    </modules>
+  </component>
+</project>

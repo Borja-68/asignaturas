@@ -83,11 +83,11 @@ public class gestorBD {
         try {
             while (resultado.next()) {
                 System.out.println(
-                        resultado.getInt(1)
+                                resultado.getInt(1)
                                 + " " + resultado.getInt(2)
-                                + resultado.getInt(3)
+                                + " " + resultado.getInt(3)
                                 + " " + resultado.getInt(4)
-                                + resultado.getInt(5));
+                                + " " +resultado.getString(5));
             }
         } catch (SQLException e) {
             System.out.println("sucedio un error en el resultado");
@@ -111,7 +111,7 @@ public class gestorBD {
     }
 
     private static void consultaVictoriasPorEquipo(Connection conexion) {
-        ResultSet resultado = AccionesDB.obtenerPilotoMasViejo(conexion);
+        ResultSet resultado = AccionesDB.obtenerVictoriasPorEquipo(conexion);
         try {
             while (resultado.next()) {
                 System.out.println(resultado.getInt(1)
