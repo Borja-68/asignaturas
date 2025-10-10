@@ -9,7 +9,8 @@ package com.mycompany.calculator;
  * @author a24borjapp
  */
 public class dialogo extends javax.swing.JDialog {
-    
+    public static final int RET_CANCEL = 0;
+    private int returnStatus = RET_CANCEL;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(dialogo.class.getName());
 
     /**
@@ -30,11 +31,27 @@ public class dialogo extends javax.swing.JDialog {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        botPafuera2 = new javax.swing.JButton();
+        botPafuera = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         jLabel1.setText("no   :)");
+
+        botPafuera2.setText("sal");
+        botPafuera2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botPafuera2ActionPerformed(evt);
+            }
+        });
+
+        botPafuera.setText("fuera");
+        botPafuera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botPafueraActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -44,18 +61,40 @@ public class dialogo extends javax.swing.JDialog {
                 .addContainerGap(132, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(125, 125, 125))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(63, 63, 63)
+                .addComponent(botPafuera2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(botPafuera)
+                .addGap(81, 81, 81))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(88, 88, 88)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(108, Short.MAX_VALUE))
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botPafuera2)
+                    .addComponent(botPafuera))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void botPafuera2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botPafuera2ActionPerformed
+        doClose(RET_CANCEL);// TODO add your handling code here:
+    }//GEN-LAST:event_botPafuera2ActionPerformed
+
+    private void botPafueraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botPafueraActionPerformed
+        doClose(RET_CANCEL);// TODO add your handling code here:
+    }//GEN-LAST:event_botPafueraActionPerformed
+     private void doClose(int retStatus) {
+        returnStatus = retStatus;
+        setVisible(false);
+        dispose();
+    }
     /**
      * @param args the command line arguments
      */
@@ -94,6 +133,8 @@ public class dialogo extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botPafuera;
+    private javax.swing.JButton botPafuera2;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

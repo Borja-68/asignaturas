@@ -28,6 +28,13 @@
               <Component id="jLabel1" min="-2" pref="143" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="125" max="-2" attributes="0"/>
           </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
+              <Component id="botPafuera2" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="botPafuera" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -35,7 +42,12 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" pref="104" max="-2" attributes="0"/>
-              <EmptySpace pref="108" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="botPafuera2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="botPafuera" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="53" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -48,6 +60,22 @@
         </Property>
         <Property name="text" type="java.lang.String" value="no   :)"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="botPafuera2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="sal"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botPafuera2ActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="botPafuera">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="fuera"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botPafueraActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
