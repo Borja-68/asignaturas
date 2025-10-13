@@ -33,7 +33,10 @@ public class AccionesDB {
             }
         }while(nivel<=0 || nivel>100);
     try{
-        PreparedStatement sentencia= conexion.prepareStatement("INSERT INTO objetos.Pokemons (pokemon) VALUES (ROW('Pikachu', 'Eléctrico', 30);");
+        PreparedStatement sentencia= conexion.prepareStatement("INSERT INTO objetos.Pokemons (pokemon) VALUES (ROW(?,?,?);");
+        sentencia.setString(1,nombre);
+        sentencia.setString(2,tipo);
+        sentencia.setInt(3,nivel);
     }catch (SQLException e){
         System.out.println("insercion fallida");
     }
