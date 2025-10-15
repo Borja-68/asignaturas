@@ -54,3 +54,9 @@ on delete cascade on update cascade,
 foreign key(id_tratamiento) references hospital.Tratamientos(id_tratamiento)
 on delete cascade on update cascade
 );
+
+insert into hospital.medicos(id_medico,nombre_medico,contacto) values (1,'calisto', Row('Calisto_Medico','22222222Y','222222222','calistomuylisto@gmail.com'));
+insert into hospital.especialidades values (1,'protesis');
+insert into hospital.salas values (1,'emergencia','1-2');
+insert into hospital.tratamientos values (1,1,1);
+insert into hospital.salas_tratamientos values (1,1);

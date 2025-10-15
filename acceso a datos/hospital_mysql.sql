@@ -34,3 +34,7 @@ on delete cascade on update cascade,
 foreign key(id_tratamiento) references Tratamientos(id_tratamiento)
 on delete cascade on update cascade
 );
+insert into pacientes values(1,"LUCAS","Lucasito@gmail.com","1987-11-12");
+insert into tratamientos values(1,"acupuntura","tratamiento con agujas");
+insert into citas values(1,1,"2025-12-12");
+insert into pacientes_tratamientos values(1,1,"2025-12-12");
