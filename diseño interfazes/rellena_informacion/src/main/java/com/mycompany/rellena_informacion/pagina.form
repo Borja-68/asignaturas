@@ -1,0 +1,658 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.9" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <NonVisualComponents>
+    <Component class="javax.swing.ButtonGroup" name="GrupoDeCatering">
+    </Component>
+    <Component class="javax.swing.ButtonGroup" name="GrupoAsistentes">
+    </Component>
+    <Component class="javax.swing.ButtonGroup" name="GrupoEscape">
+    </Component>
+    <Component class="javax.swing.ButtonGroup" name="GrupoBar">
+    </Component>
+  </NonVisualComponents>
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="menu" alignment="0" max="32767" attributes="0"/>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="menu" alignment="1" pref="469" max="32767" attributes="0"/>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Container class="javax.swing.JTabbedPane" name="menu">
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
+      <SubComponents>
+        <Container class="javax.swing.JPanel" name="DatosCliente">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Datos personales">
+                <Property name="tabTitle" type="java.lang.String" value="Datos personales"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="LableTelefono" alignment="0" min="-2" pref="54" max="-2" attributes="0"/>
+                          <Component id="LableApellido2" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="LableApellido1" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="LableNombre" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="FieldNombre" alignment="0" max="32767" attributes="0"/>
+                          <Component id="FieldApellido1" alignment="0" max="32767" attributes="0"/>
+                          <Component id="FieldApellido2" alignment="0" max="32767" attributes="0"/>
+                          <Component id="FormatedFieldTelefono" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="169" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace pref="80" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="LableNombre" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="FieldNombre" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="LableApellido1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="FieldApellido1" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="FieldApellido2" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="LableApellido2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="LableTelefono" max="32767" attributes="0"/>
+                          <Component id="FormatedFieldTelefono" pref="28" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="LableApellido2">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Apellido2"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="LableNombre">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Nombre"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="LableApellido1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Apellido1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="LableTelefono">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="NumTel"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="FieldApellido2">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FieldApellido2ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JTextField" name="FieldApellido1">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FieldApellido1ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JTextField" name="FieldNombre">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FieldNombreActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JFormattedTextField" name="FormatedFieldTelefono">
+              <Properties>
+                <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
+                  <Format format="#0" subtype="-1" type="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="introduce numero telefono"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="DatosBoda">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Datos boda">
+                <Property name="tabTitle" type="java.lang.String" value="Datos boda"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="RBCateringMenu" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="RBCateringBuffet" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="RBCateringChef" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="BotonGuardar" min="-2" pref="110" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="0" pref="3" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="LableFecha" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="FormatedFieldFecha" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="ComboBoxPresupuesto" min="-2" pref="118" max="-2" attributes="0"/>
+                                  <Component id="LablePresupuesto" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="FormatedFieldNInvitados" min="-2" pref="120" max="-2" attributes="0"/>
+                                  <Component id="LableNInvitados" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Component id="LabelAsistentes" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="LabelEscape" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="LableTipoCatering" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="LabelBar" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="RBBarSi" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="RBBarNo" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="RBEscapeSi" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="RBEscapeNo" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="RBAsistentesSi" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                                  <Component id="RBAsistentesNo" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <EmptySpace pref="34" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="LableFecha" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="LablePresupuesto" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="LableNInvitados" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="FormatedFieldFecha" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="ComboBoxPresupuesto" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="FormatedFieldNInvitados" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                      <Component id="LableTipoCatering" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="RBCateringMenu" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="RBCateringBuffet" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="RBCateringChef" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="LabelAsistentes" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="RBAsistentesSi" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="RBAsistentesNo" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="LabelEscape" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="RBEscapeSi" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="RBEscapeNo" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="LabelBar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="RBBarSi" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="RBBarNo" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="BotonGuardar" min="-2" pref="35" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="LableFecha">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Fecha voda"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="LablePresupuesto">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Presupuestos voda"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="LableNInvitados">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Numero invitados"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="LableTipoCatering">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Tipo de servicio catering"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="LabelAsistentes">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Habitaciones para asistentes"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="LabelEscape">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Ruta de escape?"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="LabelBar">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="bar libre?"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JFormattedTextField" name="FormatedFieldFecha">
+              <Properties>
+                <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
+                  <Format subtype="1" type="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="dd/mm/yy"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FormatedFieldFechaActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="ComboBoxPresupuesto">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="4">
+                    <StringItem index="0" value="menos de 1000"/>
+                    <StringItem index="1" value="entre1000 y 2000"/>
+                    <StringItem index="2" value="entre 2000 y 3000"/>
+                    <StringItem index="3" value="mas de 3000"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ComboBoxPresupuestoActionPerformed"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JFormattedTextField" name="FormatedFieldNInvitados">
+              <Properties>
+                <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
+                  <Format format="#0" subtype="-1" type="0"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JRadioButton" name="RBCateringMenu">
+              <Properties>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="GrupoDeCatering"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="men&#xfa; establecido"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JRadioButton" name="RBCateringChef">
+              <Properties>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="GrupoDeCatering"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="negociaci&#xf3;n con el chef"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JRadioButton" name="RBCateringBuffet">
+              <Properties>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="GrupoDeCatering"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="buffet"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JRadioButton" name="RBAsistentesSi">
+              <Properties>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="GrupoAsistentes"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="si"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JRadioButton" name="RBAsistentesNo">
+              <Properties>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="GrupoAsistentes"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="no"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JRadioButton" name="RBEscapeSi">
+              <Properties>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="GrupoEscape"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="si"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JRadioButton" name="RBEscapeNo">
+              <Properties>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="GrupoEscape"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="no"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JRadioButton" name="RBBarSi">
+              <Properties>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="GrupoBar"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="si"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JRadioButton" name="RBBarNo">
+              <Properties>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="GrupoBar"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="no"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="BotonGuardar">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Guardar"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BotonGuardarActionPerformed"/>
+              </Events>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="Menu">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="tab3">
+                <Property name="tabTitle" type="java.lang.String" value="tab3"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="ResLabelEscape1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="ResTextEscape" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="ResLablePresupuesto1" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="ResTextPresupuesto" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="ResLableNInvitados1" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="ResTextInvitados" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="ResLableNombre1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="ResLableApellido3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="ResLableApellido4" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="ResLableTelefono1" alignment="0" min="-2" pref="54" max="-2" attributes="0"/>
+                                      <Component id="ResLableFecha1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                                          <Component id="ResTextFecha" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="1" attributes="0">
+                                              <Component id="ResTextApellido1" alignment="1" min="-2" max="-2" attributes="0"/>
+                                              <Component id="ResTextNombre" alignment="1" min="-2" max="-2" attributes="0"/>
+                                              <Component id="ResTextApellido2" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="ResTextNumero" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="ResLableTipoCatering1" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                                  <Component id="ResTextCatering" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Component id="ResLabelBar1" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
+                                          <Component id="ResTextBar" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="ResLabelAsistentes1" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="ResTextAsistentes" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <EmptySpace pref="178" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="ResLableNombre1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="ResTextNombre" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="ResLableApellido3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="ResTextApellido1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="ResLableApellido4" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="ResTextApellido2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="ResLableTelefono1" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
+                          <Component id="ResTextNumero" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="ResLableFecha1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="ResTextFecha" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="ResLablePresupuesto1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="ResTextPresupuesto" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="ResLableNInvitados1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="ResTextInvitados" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="ResLableTipoCatering1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="ResTextCatering" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="ResLabelAsistentes1" min="-2" max="-2" attributes="0"/>
+                          <Component id="ResTextAsistentes" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="ResTextEscape" min="-2" max="-2" attributes="0"/>
+                          <Component id="ResLabelEscape1" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="31" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="ResLabelBar1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="ResTextBar" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="ResLableApellido3">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Apellido1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="ResLableNombre1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Nombre"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="ResLabelAsistentes1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Habitaciones para asistentes"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="ResLablePresupuesto1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Presupuestos voda"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="ResLableApellido4">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Apellido2"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="ResLableTipoCatering1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Tipo de servicio catering"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="ResTextBar">
+            </Component>
+            <Component class="javax.swing.JTextField" name="ResTextEscape">
+            </Component>
+            <Component class="javax.swing.JTextField" name="ResTextAsistentes">
+            </Component>
+            <Component class="javax.swing.JTextField" name="ResTextCatering">
+            </Component>
+            <Component class="javax.swing.JTextField" name="ResTextInvitados">
+            </Component>
+            <Component class="javax.swing.JTextField" name="ResTextPresupuesto">
+            </Component>
+            <Component class="javax.swing.JTextField" name="ResTextFecha">
+            </Component>
+            <Component class="javax.swing.JTextField" name="ResTextNumero">
+            </Component>
+            <Component class="javax.swing.JTextField" name="ResTextApellido2">
+            </Component>
+            <Component class="javax.swing.JTextField" name="ResTextApellido1">
+            </Component>
+            <Component class="javax.swing.JTextField" name="ResTextNombre">
+            </Component>
+            <Component class="javax.swing.JLabel" name="ResLableNInvitados1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Numero invitados"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="ResLableTelefono1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="NumTel"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="ResLabelEscape1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Ruta de escape?"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="ResLabelBar1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="bar libre?"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="ResLableFecha1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Fecha voda"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+      </SubComponents>
+    </Container>
+  </SubComponents>
+</Form>
