@@ -31,25 +31,25 @@ public class DialogoBueno extends javax.swing.JDialog {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        BotonDenegar = new javax.swing.JButton();
         BotonAceptar = new javax.swing.JButton();
+        BotonDenegar1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel1.setText("Quieres guardar");
 
-        BotonDenegar.setText("no");
-        BotonDenegar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonDenegarActionPerformed(evt);
-            }
-        });
-
         BotonAceptar.setText("si");
         BotonAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonAceptarActionPerformed(evt);
+            }
+        });
+
+        BotonDenegar1.setText("no");
+        BotonDenegar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonDenegar1ActionPerformed(evt);
             }
         });
 
@@ -59,37 +59,54 @@ public class DialogoBueno extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(89, 89, 89)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(BotonAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(90, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(BotonDenegar, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(BotonAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(46, 46, 46)
+                    .addComponent(BotonDenegar1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(309, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(82, 82, 82)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(BotonDenegar, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
-                    .addComponent(BotonAceptar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(57, 57, 57))
+                .addGap(92, 92, 92)
+                .addComponent(BotonAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(150, Short.MAX_VALUE)
+                    .addComponent(BotonDenegar1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(47, 47, 47)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BotonDenegarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonDenegarActionPerformed
-            doClose(RET_CANCEL);        // TODO add your handling code here:
-    }//GEN-LAST:event_BotonDenegarActionPerformed
-
     private void BotonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAceptarActionPerformed
-        // TODO add your handling code here:
+        pagina.setResTextNombre(pagina.getFieldNombre());
+        pagina.setResTextApellido1(pagina.getFieldApellido1());
+        pagina.setResTextApellido2(pagina.getFieldApellido2());
+        pagina.setResTextNumeroTel(pagina.getFormatedFieldTelefono());
+        pagina.setResTextFecha(pagina.getFormatedFieldFecha());
+        pagina.setResTextInvitado(pagina.getFormatedFieldNInvitados());
+        pagina.setResTextPresupuesto(pagina.getComboBoxPresupuesto());
+        pagina.setResTextCatering(pagina.getGrupoDeCatering());
+        pagina.setResTextAsistentes(pagina.getGrupoAsistentes());
+        pagina.setResTextEscape(pagina.getGrupoEscape());
+        pagina.setResTextBar(pagina.getGrupoBar());
+     // TODO add your handling code here:
     }//GEN-LAST:event_BotonAceptarActionPerformed
+
+    private void BotonDenegar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonDenegar1ActionPerformed
+
+        doClose(RET_CANCEL);   
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BotonDenegar1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -135,7 +152,7 @@ public class DialogoBueno extends javax.swing.JDialog {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonAceptar;
-    private javax.swing.JButton BotonDenegar;
+    private javax.swing.JButton BotonDenegar1;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
