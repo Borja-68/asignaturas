@@ -17,6 +17,15 @@ public class pagina extends javax.swing.JFrame {
      */
     public pagina() {
         initComponents();
+        RBAsistentesNo.setActionCommand("no");
+        RBAsistentesSi.setActionCommand("si");
+        RBBarNo.setActionCommand("no");
+        RBBarSi.setActionCommand("si");
+        RBEscapeNo.setActionCommand("no");
+        RBEscapeSi.setActionCommand("si");
+        RBCateringBuffet.setActionCommand("buffet");
+        RBCateringChef.setActionCommand("chef");
+        RBCateringMenu.setActionCommand("menu");      
     }
 
     /**
@@ -63,7 +72,7 @@ public class pagina extends javax.swing.JFrame {
         RBBarSi = new javax.swing.JRadioButton();
         RBBarNo = new javax.swing.JRadioButton();
         BotonGuardar = new javax.swing.JButton();
-        Menu = new javax.swing.JPanel();
+        Resultado = new javax.swing.JPanel();
         ResLableApellido3 = new javax.swing.JLabel();
         ResLableNombre1 = new javax.swing.JLabel();
         ResLabelAsistentes1 = new javax.swing.JLabel();
@@ -88,6 +97,13 @@ public class pagina extends javax.swing.JFrame {
         ResLableFecha1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Reserva Voda");
+        setBackground(new java.awt.Color(0, 102, 102));
+
+        menu.setBackground(new java.awt.Color(255, 204, 204));
+        menu.setForeground(new java.awt.Color(0, 0, 0));
+
+        DatosCliente.setBackground(new java.awt.Color(0, 153, 153));
 
         LableApellido2.setText("Apellido2");
 
@@ -161,6 +177,8 @@ public class pagina extends javax.swing.JFrame {
 
         menu.addTab("Datos personales", DatosCliente);
 
+        DatosBoda.setBackground(new java.awt.Color(0, 153, 153));
+
         LableFecha.setText("Fecha voda");
 
         LablePresupuesto.setText("Presupuestos voda");
@@ -176,7 +194,6 @@ public class pagina extends javax.swing.JFrame {
         LabelBar.setText("bar libre?");
 
         FormatedFieldFecha.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
-        FormatedFieldFecha.setText("dd/mm/yy");
         FormatedFieldFecha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 FormatedFieldFechaActionPerformed(evt);
@@ -245,36 +262,39 @@ public class pagina extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(DatosBodaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(DatosBodaLayout.createSequentialGroup()
-                        .addGap(0, 3, Short.MAX_VALUE)
+                        .addGroup(DatosBodaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(LabelAsistentes)
+                            .addComponent(LabelEscape)
+                            .addComponent(LableTipoCatering)
+                            .addComponent(LabelBar)
+                            .addGroup(DatosBodaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(DatosBodaLayout.createSequentialGroup()
+                                    .addComponent(RBBarSi)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(RBBarNo))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, DatosBodaLayout.createSequentialGroup()
+                                    .addComponent(RBEscapeSi)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(RBEscapeNo))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, DatosBodaLayout.createSequentialGroup()
+                                    .addComponent(RBAsistentesSi)
+                                    .addGap(50, 50, 50)
+                                    .addComponent(RBAsistentesNo))))
+                        .addContainerGap(272, Short.MAX_VALUE))
+                    .addGroup(DatosBodaLayout.createSequentialGroup()
+                        .addGap(0, 8, Short.MAX_VALUE)
                         .addGroup(DatosBodaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(LableFecha)
-                            .addComponent(FormatedFieldFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(44, 44, 44)
+                            .addComponent(FormatedFieldFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
                         .addGroup(DatosBodaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(ComboBoxPresupuesto, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(LablePresupuesto))
-                        .addGap(29, 29, 29)
+                        .addGap(35, 35, 35)
                         .addGroup(DatosBodaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(FormatedFieldNInvitados, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(LableNInvitados)))
-                    .addComponent(LabelAsistentes)
-                    .addComponent(LabelEscape)
-                    .addComponent(LableTipoCatering)
-                    .addComponent(LabelBar)
-                    .addGroup(DatosBodaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(DatosBodaLayout.createSequentialGroup()
-                            .addComponent(RBBarSi)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(RBBarNo))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, DatosBodaLayout.createSequentialGroup()
-                            .addComponent(RBEscapeSi)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(RBEscapeNo))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, DatosBodaLayout.createSequentialGroup()
-                            .addComponent(RBAsistentesSi)
-                            .addGap(50, 50, 50)
-                            .addComponent(RBAsistentesNo))))
-                .addContainerGap(34, Short.MAX_VALUE))
+                            .addComponent(LableNInvitados)
+                            .addComponent(FormatedFieldNInvitados, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(32, Short.MAX_VALUE))))
         );
         DatosBodaLayout.setVerticalGroup(
             DatosBodaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -321,6 +341,8 @@ public class pagina extends javax.swing.JFrame {
 
         menu.addTab("Datos boda", DatosBoda);
 
+        Resultado.setBackground(new java.awt.Color(0, 153, 153));
+
         ResLableApellido3.setText("Apellido1");
 
         ResLableNombre1.setText("Nombre");
@@ -343,109 +365,109 @@ public class pagina extends javax.swing.JFrame {
 
         ResLableFecha1.setText("Fecha voda");
 
-        javax.swing.GroupLayout MenuLayout = new javax.swing.GroupLayout(Menu);
-        Menu.setLayout(MenuLayout);
-        MenuLayout.setHorizontalGroup(
-            MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(MenuLayout.createSequentialGroup()
+        javax.swing.GroupLayout ResultadoLayout = new javax.swing.GroupLayout(Resultado);
+        Resultado.setLayout(ResultadoLayout);
+        ResultadoLayout.setHorizontalGroup(
+            ResultadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ResultadoLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(MenuLayout.createSequentialGroup()
+                .addGroup(ResultadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(ResultadoLayout.createSequentialGroup()
                         .addComponent(ResLablePresupuesto1)
                         .addGap(18, 18, 18)
                         .addComponent(ResTextPresupuesto))
-                    .addGroup(MenuLayout.createSequentialGroup()
+                    .addGroup(ResultadoLayout.createSequentialGroup()
                         .addComponent(ResLableNInvitados1)
                         .addGap(18, 18, 18)
                         .addComponent(ResTextInvitados))
-                    .addGroup(MenuLayout.createSequentialGroup()
-                        .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(ResultadoLayout.createSequentialGroup()
+                        .addGroup(ResultadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(ResLableNombre1)
                             .addComponent(ResLableApellido3)
                             .addComponent(ResLableApellido4)
                             .addComponent(ResLableTelefono1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(ResLableFecha1))
-                        .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenuLayout.createSequentialGroup()
+                        .addGroup(ResultadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ResultadoLayout.createSequentialGroup()
                                 .addGap(31, 31, 31)
                                 .addComponent(ResTextFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(MenuLayout.createSequentialGroup()
+                            .addGroup(ResultadoLayout.createSequentialGroup()
                                 .addGap(18, 18, 18)
-                                .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(ResultadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(ResultadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(ResTextNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
                                         .addComponent(ResTextApellido1)
                                         .addComponent(ResTextApellido2))
                                     .addComponent(ResTextNumeroTel)))))
-                    .addGroup(MenuLayout.createSequentialGroup()
+                    .addGroup(ResultadoLayout.createSequentialGroup()
                         .addComponent(ResLableTipoCatering1)
                         .addGap(32, 32, 32)
                         .addComponent(ResTextCatering))
-                    .addGroup(MenuLayout.createSequentialGroup()
+                    .addGroup(ResultadoLayout.createSequentialGroup()
                         .addComponent(ResLabelAsistentes1)
                         .addGap(18, 18, 18)
                         .addComponent(ResTextAsistentes, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenuLayout.createSequentialGroup()
+                    .addGroup(ResultadoLayout.createSequentialGroup()
                         .addComponent(ResLabelBar1)
-                        .addGap(88, 88, 88)
-                        .addComponent(ResTextBar))
-                    .addGroup(MenuLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(ResTextBar, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(ResultadoLayout.createSequentialGroup()
                         .addComponent(ResLabelEscape1)
                         .addGap(52, 52, 52)
                         .addComponent(ResTextEscape)))
                 .addContainerGap(86, Short.MAX_VALUE))
         );
-        MenuLayout.setVerticalGroup(
-            MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenuLayout.createSequentialGroup()
+        ResultadoLayout.setVerticalGroup(
+            ResultadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ResultadoLayout.createSequentialGroup()
                 .addGap(11, 11, 11)
-                .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(ResultadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ResLableNombre1)
                     .addComponent(ResTextNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(ResultadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ResLableApellido3)
                     .addComponent(ResTextApellido1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(ResultadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ResLableApellido4)
                     .addComponent(ResTextApellido2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(ResultadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ResLableTelefono1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ResTextNumeroTel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(ResultadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ResLableFecha1)
                     .addComponent(ResTextFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(ResultadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ResLablePresupuesto1)
                     .addComponent(ResTextPresupuesto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(ResultadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ResLableNInvitados1)
                     .addComponent(ResTextInvitados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(ResultadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ResLableTipoCatering1)
                     .addComponent(ResTextCatering, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(ResultadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ResLabelAsistentes1)
                     .addComponent(ResTextAsistentes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24)
-                .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(ResultadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ResLabelEscape1)
                     .addComponent(ResTextEscape, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
-                .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addGroup(ResultadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ResLabelBar1)
-                    .addComponent(ResTextBar, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30))
+                    .addComponent(ResTextBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27))
         );
 
-        menu.addTab("resultados", Menu);
+        menu.addTab("resultados", Resultado);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -516,35 +538,35 @@ public class pagina extends javax.swing.JFrame {
     public static void setResTextNombre(String nombre){
     ResTextNombre.setText(nombre);
     }
-    public static void setResTextApellido1(String nombre){
-    ResTextApellido1.setText(nombre);
+    public static void setResTextApellido1(String apell){
+    ResTextApellido1.setText(apell);
     }
-    public static void setResTextApellido2(String nombre){
-    ResTextApellido2.setText(nombre);
+    public static void setResTextApellido2(String apell){
+    ResTextApellido2.setText(apell);
     }
-    public static void setResTextAsistentes(String nombre){
-    ResTextAsistentes.setText(nombre);
+    public static void setResTextAsistentes(String asis){
+    ResTextAsistentes.setText(asis);
     }
-    public static void setResTextNumeroTel(String nombre){
-    ResTextNumeroTel.setText(nombre);
+    public static void setResTextNumeroTel(String num){
+    ResTextNumeroTel.setText(num);
     }
-    public static void setResTextPresupuesto(String nombre){
-    ResTextPresupuesto.setText(nombre);
+    public static void setResTextPresupuesto(String pres){
+    ResTextPresupuesto.setText(pres);
     }
-    public static void setResTextInvitado(String nombre){
-    ResTextInvitados.setText(nombre);
+    public static void setResTextInvitado(String inv){
+    ResTextInvitados.setText(inv);
     }
-    public static void setResTextFecha(String nombre){
-    ResTextFecha.setText(nombre);
+    public static void setResTextFecha(String fech){
+    ResTextFecha.setText(fech);
     }
-    public static void setResTextEscape(String nombre){
-    ResTextFecha.setText(nombre);
+    public static void setResTextEscape(String esc){
+    ResTextEscape.setText(esc);
     }
-    public static void setResTextCatering(String nombre){
-    ResTextCatering.setText(nombre);
+    public static void setResTextCatering(String cat){
+    ResTextCatering.setText(cat);
     }
-    public static void setResTextBar(String nombre){
-    ResTextBar.setText(nombre);
+    public static void setResTextBar(String bar){
+    ResTextBar.setText(bar);
     }
    
     public static String getFieldNombre(){
@@ -566,16 +588,44 @@ public class pagina extends javax.swing.JFrame {
     return FormatedFieldTelefono.getText(); 
     }
     public static String getGrupoAsistentes(){
+        try{
+            
     return GrupoAsistentes.getSelection().getActionCommand(); 
+     
+        }catch(NullPointerException e){
+            System.out.println(" aun no se selecciono una opcion de asistentes");
+        return "";
+        }
     }
     public static String getGrupoBar(){
-    return GrupoBar.getSelection().getActionCommand(); 
+        try{
+            
+    return GrupoBar.getSelection().getActionCommand();
+     
+        }catch(NullPointerException e){
+            System.out.println(" aun no se selecciono una opcion de Bar");
+        return "";
+        }
     }
     public static String getGrupoDeCatering(){
+        try{
+            
     return GrupoDeCatering.getSelection().getActionCommand();
+        
+        }catch(NullPointerException e){
+            System.out.println(" aun no se selecciono una opcion de catering");
+        return "";
+        }
     }
     public static String getGrupoEscape(){
-    return GrupoEscape.getSelection().getActionCommand(); 
+     try{
+         
+    return GrupoEscape.getSelection().getActionCommand();
+     
+        }catch(NullPointerException e){
+            System.out.println(" aun no se selecciono una opcion de escape");
+        return "";
+        }
     }
     public static String getComboBoxPresupuesto(){
     return ComboBoxPresupuesto.getSelectedItem().toString(); 
@@ -613,7 +663,6 @@ public class pagina extends javax.swing.JFrame {
     private javax.swing.JLabel LablePresupuesto;
     private javax.swing.JLabel LableTelefono;
     private javax.swing.JLabel LableTipoCatering;
-    private javax.swing.JPanel Menu;
     private javax.swing.JRadioButton RBAsistentesNo;
     private javax.swing.JRadioButton RBAsistentesSi;
     private javax.swing.JRadioButton RBBarNo;
@@ -645,6 +694,7 @@ public class pagina extends javax.swing.JFrame {
     private static javax.swing.JTextField ResTextNombre;
     private static javax.swing.JTextField ResTextNumeroTel;
     private static javax.swing.JTextField ResTextPresupuesto;
+    private javax.swing.JPanel Resultado;
     private javax.swing.JTabbedPane menu;
     // End of variables declaration//GEN-END:variables
 }
