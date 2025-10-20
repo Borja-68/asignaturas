@@ -6,18 +6,19 @@ public class ConexionesDB {
 
     private static Connection conectionPostgre;
     private String urlPostgre = "jdbc:postgresql://localhost:5432/hospital_postgre";
-    private static  String usuarioPostgre="postgres";
+    private String usuarioPostgre="postgres";
 
     private static Connection conectionMysql;
     private String urlMysql = "jdbc:mysql://localhost:3306/hospital_mysql";
-    private static  String usuarioMysql="root";
+    private String usuarioMysql="root";
 
-    private static  String contrasena="abc123.";
+    private String contrasena="abc123.";
 
     private ConexionesDB() {
         try {
             conectionMysql = DriverManager.getConnection(urlMysql, usuarioMysql, contrasena);
-            conectionPostgre = DriverManager.getConnection(urlPostgre, usuarioPostgre, contrasena);
+            conectionMysql = DriverManager.getConnection(urlPostgre, usuarioPostgre, contrasena);
+
         } catch (SQLException e) {
             System.out.println("hubo un error en la creacion");
         }

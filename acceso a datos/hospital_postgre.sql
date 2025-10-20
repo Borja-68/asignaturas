@@ -31,7 +31,7 @@ create type hospital.datos_contacto as(nombre_contacto varchar(100),nif varchar(
 create table hospital.Medicos(
 id_medico serial primary key,
 nombre_medico varchar(100),
-contacto hospital.datos_contacto
+contacto hospital.datos_contacto unique
 );
 
 
