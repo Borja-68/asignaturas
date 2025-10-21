@@ -158,10 +158,12 @@
                       </Group>
                   </Group>
                   <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="botonDivision" alignment="0" min="-2" pref="35" max="-2" attributes="0"/>
-                      <Component id="botonElevado" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                      <Component id="botonResta" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="botonElevado" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                          <Component id="botonResta" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
