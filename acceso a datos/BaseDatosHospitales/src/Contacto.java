@@ -1,33 +1,31 @@
 public class Contacto {
     private String nombreContacto;
     private String nif;
-    private String telefono;
+    private int telefono;
     private String correo;
 
     public Contacto(){}
-    public Contacto(String nombreContacto,String nif,String telefono,String correo){
+    public Contacto(String nombreContacto,String nif,int telefono,String correo){
         this.nombreContacto=nombreContacto;
         this.nif=nif;
-        this.telefono="34"+telefono;
+        this.telefono=telefono;
         if(correo.contains("@gmail.com"))this.correo=correo;
         else this.correo=correo+"@gmail.com";
-    }
-
-    public String getNombreContacto() {
-        return nombreContacto;
     }
 
     public String getCorreo() {
         return correo;
     }
 
-    public String getTelefono() {
+    public int getTelefono() {
         return telefono;
     }
 
     public String getNif() {
         return nif;
     }
+
+
 
     public static boolean nifCorrecto(String nif){
         if(nif.length()!=9){
@@ -50,6 +48,7 @@ public class Contacto {
         return true;
     }
 
+
     public static boolean telefonoCorrecto(String telefono){
         if(telefono.length()!=9){
             System.out.println("la cantidad de numeros no es 9");
@@ -63,4 +62,6 @@ public class Contacto {
         }
         return true;
     }
+
+
 }
