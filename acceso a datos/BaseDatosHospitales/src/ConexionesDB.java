@@ -17,7 +17,7 @@ public class ConexionesDB {
     private ConexionesDB() {
         try {
             conectionMysql = DriverManager.getConnection(urlMysql, usuarioMysql, contrasena);
-            conectionMysql = DriverManager.getConnection(urlPostgre, usuarioPostgre, contrasena);
+            conectionPostgre = DriverManager.getConnection(urlPostgre, usuarioPostgre, contrasena);
 
         } catch (SQLException e) {
             System.out.println("hubo un error en la creacion");

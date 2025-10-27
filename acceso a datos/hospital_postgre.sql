@@ -1,7 +1,6 @@
 -- Database: hospital_postgre
 
 -- DROP DATABASE IF EXISTS hospital_postgre;
-
 CREATE DATABASE hospital_postgre
     WITH
     OWNER = postgres

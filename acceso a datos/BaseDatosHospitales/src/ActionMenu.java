@@ -1,11 +1,13 @@
+import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ActionMenu {
-    public static void meun(){
+    public static void menu(){
         Scanner input=new Scanner(System.in);
         boolean salir=false;
+        ConexionesDB.getConectionMysql();
         int opcion=-1;
         do{
             try {
@@ -26,20 +28,20 @@ public class ActionMenu {
                 opcion=input.nextInt();
                 input.nextLine();
                 switch (opcion){
-                    case 1: break;
-                    case 2: break;
-                    case 3: break;
-                    case 4: break;
-                    case 5: break;
-                    case 6: break;
-                    case 7: break;
-                    case 8: break;
-                    case 9: break;
-                    case 10: break;
-                    case 11: break;
-                    case 12: break;
-                    case 13: break;
-                    default: break;
+                    case 1: nuevaEspecialidad(input);   break;
+                    case 2: nuevomedico(input);         break;
+                    case 3: quitaMedico(input);         break;
+                    case 4: nuevoPaciente(input);       break;
+                    case 5: quitaPaciente(input);       break;
+                    case 6: creaTratamiento(input);     break;
+                    case 7: quitaTratamiento(input);    break;
+                    case 8: listarTratamientosPorPaciente(input); break;
+                    case 9: listaCitasPaciente(); break;
+                    case 10: listaSalasTratamiento(); break;
+                    case 11: devueveDatosTratamiento(); break;
+                    case 12: obtenerPacientesPorEspecialidad(input); break;
+                    case 13: input.close(); AccionesDB.close(); salir=true; break;
+                    default: System.out.println("opcion seleccionada no valida");break;
 
                 }
             }catch (InputMismatchException e){
@@ -89,10 +91,101 @@ public class ActionMenu {
         String email = getNormalString(input);
         if (!email.contains("@gmail.com")) email = email + "@gmail.com";
 
-        LocalDate fecha;
-        fecha.format("yy/mm/dd");
+        LocalDate fecha= LocalDate.parse(getFecha(input));
+        AccionesDB.nuevoPaciente(nombre,email,fecha);
+
     }
 
+    public static void quitaPaciente(Scanner input){
+        int numero = -1;
+        do {
+            try {
+                System.out.println("introduzca la id del medico que quiere eliminar");
+                numero = input.nextInt();
+                input.nextLine();
+
+            } catch (InputMismatchException e) {
+                System.out.println("lo introducido no fue un numero");
+                input.nextLine();
+            }
+        } while (numero <= 0);
+        AccionesDB.quitaPaciente(numero);
+    }
+
+    public  static  void creaTratamiento(Scanner input){
+
+        System.out.println("introduce nombre tratamiento");
+        String nombre = getNormalString(input);
+
+        System.out.println("introduce la descripcion tratamiento");
+        String descripcion = getNormalString(input);
+
+        System.out.println("introduzca la nombre de la especialidad");
+        String nombreEspecialidad = getNormalString(input);
+
+        String nif = "";
+        do {
+            System.out.println("inserta el nif");
+            nif = input.next();
+            input.nextLine();
+        } while (!Contacto.nifCorrecto(nif));
+
+        AccionesDB.creaTratamiento(nombre,descripcion,nombreEspecialidad,nif);
+    }
+
+    public static void quitaTratamiento(Scanner input){
+        System.out.println("introduce el nombre del tratamiento");
+        String nombre = getNormalString(input);
+
+        AccionesDB.borraTratamiento(nombre);
+    }
+
+    public  static void listarTratamientosPorPaciente(Scanner input){
+        int maxPacientes = -1;
+        do {
+            try {
+                System.out.println("introduzca la cantidad de pacientes maxima");
+                maxPacientes = input.nextInt();
+                input.nextLine();
+
+            } catch (InputMismatchException e) {
+                System.out.println("lo introducido no fue un numero");
+                input.nextLine();
+            }
+
+        } while (maxPacientes <= 0);
+        AccionesDB.pacientesPorTratamiento(maxPacientes);
+
+    }
+
+    public  static void listaCitasPaciente(){
+        AccionesDB.listaCitasPaciente();
+    }
+
+    public  static void listaSalasTratamiento(){
+        AccionesDB.listaSalasTratamiento();
+    }
+
+    public static void devueveDatosTratamiento(){
+        AccionesDB.devueveDatosTratamiento();
+    }
+
+    public static void obtenerPacientesPorEspecialidad(Scanner input){
+        int id_especialidad = -1;
+        do {
+            try {
+                System.out.println("introduzca el numero de la especialidad deseada");
+                id_especialidad = input.nextInt();
+                input.nextLine();
+
+            } catch (InputMismatchException e) {
+                System.out.println("lo introducido no fue un numero");
+                input.nextLine();
+            }
+
+        } while (id_especialidad <= 0);
+        AccionesDB.obtenerPacientesPorEspecialidad(id_especialidad);
+    }
 
     private static String getNormalString(Scanner input){
         String cadena="";

@@ -14,7 +14,11 @@ public class AccionesDB {
         try {
             Statement obenerMayorNumero = conexionPostgre.createStatement();
             obenerMayorNumero.execute("select max(id_especialidad)+1 from hospital.especialidades");
-            int numero = obenerMayorNumero.getResultSet().getInt(1);
+            ResultSet maxnum=obenerMayorNumero.getResultSet();
+            int numero =-1;
+            while (maxnum.next()) {
+                 numero =maxnum.getInt(1);
+            }
             obenerMayorNumero.close();
 
             PreparedStatement sql = conexionPostgre.prepareStatement("insert into hospital.especialidades values(?,?);");
@@ -83,21 +87,8 @@ public class AccionesDB {
     }
 
 
-    public static void quitaPaciente(Scanner input) {
+    public static void quitaPaciente(int numero) {
         try {
-            int numero = -1;
-            do {
-                try {
-                    System.out.println("introduzca la id del medico que quiere eliminar");
-                    numero = input.nextInt();
-                    input.nextLine();
-
-                } catch (InputMismatchException e) {
-                    System.out.println("lo introducido no fue un numero");
-                    input.nextLine();
-                }
-            } while (numero <= 0);
-
             PreparedStatement sql = conexionMysql.prepareStatement("delete from pacientes where id_paciente=?;");
             sql.setInt(1, numero);
 
@@ -108,7 +99,7 @@ public class AccionesDB {
         }
     }
 
-    public static void creaTratamiento( Scanner input) {
+    public static void creaTratamiento(String nombre, String descripcion, String nombreEspecialidad, String nifMedico) {
         try {
             conexionMysql.setAutoCommit(false);
             conexionPostgre.setAutoCommit(false);
@@ -117,28 +108,6 @@ public class AccionesDB {
             obenerMayorNumeroMysql.execute("select max(id_tratamiento)+1 from tratamientos");
             int numeroMysql = obenerMayorNumeroMysql.getResultSet().getInt(1);
             obenerMayorNumeroMysql.close();
-
-            Statement obenerMayorNumeroPostgre = conexionPostgre.createStatement();
-            obenerMayorNumeroPostgre.execute("select max(id_tratamiento)+1 from hospital.tratamientos");
-            int numeroPostgre = obenerMayorNumeroPostgre.getResultSet().getInt(1);
-            obenerMayorNumeroPostgre.close();
-
-            System.out.println("introduce nombre tratamiento");
-            String nombre = getNormalString(input);
-
-            System.out.println("introduce la descripcion tratamiento");
-            String descripcion = getNormalString(input);
-
-            System.out.println("introduzca la nombre de la especialidad");
-            String nombreEspecialidad = getNormalString(input);
-
-            String nif = "";
-            do {
-                System.out.println("inserta el nif");
-                nif = input.next();
-                input.nextLine();
-            } while (!Contacto.nifCorrecto(nif));
-
 
             PreparedStatement mySql = conexionMysql.prepareStatement("insert into tratamientos values(?,?,?);");
             mySql.setInt(1, numeroMysql);
@@ -150,8 +119,8 @@ public class AccionesDB {
                     "values(?,(select id_medico from hospital.medicos where (contacto).nif=?)," +
                     "(select is_especialidad from hospital.especialidades where nombre_especialidad=?) );");
 
-            mySql.setInt(1, numeroPostgre);
-            mySql.setString(2, nif);
+            mySql.setInt(1, numeroMysql);
+            mySql.setString(2, nifMedico);
             mySql.setString(3, nombreEspecialidad);
             postgre.executeUpdate();
 
@@ -183,13 +152,10 @@ public class AccionesDB {
     }
 
 
-    public static void borraTratamiento(Scanner input) {
+    public static void borraTratamiento(String nombre) {
         try {
             conexionMysql.setAutoCommit(false);
             conexionPostgre.setAutoCommit(false);
-
-            System.out.println("introduce el nombre del tratamiento");
-            String nombre = getNormalString(input);
 
             PreparedStatement numTratamiento = conexionMysql.prepareStatement("select id_tratamiento from tratamientos where nombre_tratamiento=?;");
             numTratamiento.setString(1, nombre);
@@ -231,53 +197,53 @@ public class AccionesDB {
     }
 
 
-    public static ResultSet pucientesPorTratamiento(Scanner input) {
+    public static void pacientesPorTratamiento(int cantidad) {
         try {
-            int maxPacientes = -1;
-            do {
-                try {
-                    System.out.println("introduzca la cantidad de pacientes maxima");
-                    maxPacientes = input.nextInt();
-                    input.nextLine();
 
-                } catch (InputMismatchException e) {
-                    System.out.println("lo introducido no fue un numero");
-                    input.nextLine();
-                }
-
-            } while (maxPacientes <= 0);
-
-            PreparedStatement mySql = conexionMysql.prepareStatement("select count(id_paciente), nombre_tratamiento " +
+            PreparedStatement mySql = conexionMysql.prepareStatement("select  nombre_tratamiento,count(id_paciente) " +
                     "from pacientes_tratamientos join tratamientos on " +
                     "pacientes_tratamientos.id_tratamiento=tratamientos.id_tratamiento" +
                     " group by nombre_tratamiento having count(id_paciente)<=?;");
 
-            mySql.setInt(1, maxPacientes);
-            mySql.execute();
-            return mySql.getResultSet();
+            mySql.setInt(1, cantidad);
+            ResultSet resultado=mySql.executeQuery();
+
+            while (resultado.next()){
+                System.out.println(resultado.getString(1)+" "+resultado.getInt(2));
+            }
 
         } catch (SQLException e) {
             System.err.println("sucedio un error de consulta");
-            return null;
+
+        }
+        catch (NullPointerException e){
+            System.out.println("resultado vacio");
         }
     }
 
-    public static ResultSet listaCitasPaciente() {
+
+    public static void listaCitasPaciente() {
         try {
 
             Statement mysql = conexionMysql.createStatement();
-            mysql.execute("select count(id_cita), id_paciente " +
-                    "from citas group by id_paciente;");
+            mysql.execute("select  nombre,count(id_cita) from citas join pacientes on" +
+                    " pacientes.id_paciente=citas.id_paciente group by citas.id_paciente;");
 
-            return mysql.getResultSet();
+            ResultSet resultado= mysql.getResultSet();
+            while (resultado.next()){
+                System.out.println(resultado.getString(1)+" "+resultado.getInt(2));
+            }
 
         } catch (SQLException e) {
             System.out.println("sucedio un error en la consulta");
-            return null;
+
+        }
+        catch (NullPointerException e){
+            System.out.println("resultado vacio");
         }
     }
 
-    public static ResultSet listaSalasTratamiento() {
+    public static void listaSalasTratamiento() {
         try {
 
             Statement postgre = conexionPostgre.createStatement();
@@ -286,46 +252,71 @@ public class AccionesDB {
                     "on salas_tratamientos.id_sala=salas.id_sala" +
                     " group by nombre_sala;");
 
-            return postgre.getResultSet();
-
+            ResultSet resultado= postgre.getResultSet();
+            while (resultado.next()){
+                System.out.println(resultado.getString(1)+" "+resultado.getInt(2));
+            }
         } catch (SQLException e) {
             System.out.println("sucedio un error en la consulta");
-            return null;
+        }
+        catch (NullPointerException e){
+            System.out.println("resultado vacio");
         }
     }
 
 
 
-    public static ArrayList<ResultSet> devueveDatosTratamiento() {
-        ArrayList<ResultSet> resultado = new ArrayList<>();
+    public static void devueveDatosTratamiento() {
         try {
             Statement postgre = conexionPostgre.createStatement();
             postgre.execute("select * from hospital.tratamientos;");
-            resultado.add(postgre.getResultSet());
+            ResultSet resultadoPost=postgre.getResultSet();
             Statement mysql = conexionMysql.createStatement();
             mysql.execute("select nombre_tratamiento,descripcion from tratamientos;");
-            resultado.add(mysql.getResultSet());
-            return resultado;
+            ResultSet resultadoMy=mysql.getResultSet();
+
+            while (resultadoMy.next() && resultadoPost.next()){
+                System.out.println(resultadoPost.getInt(1)+ ", "+
+                        resultadoMy.getString(1) + ", "+
+                        resultadoMy.getString(2)+", "+
+                        resultadoPost.getInt(2)+ ", "+
+                        resultadoPost.getInt(3));
+            }
 
         } catch (SQLException e) {
             System.err.println("sucedio un error en una de las consultas");
-            return null;
+
+        }
+        catch (NullPointerException e){
+            System.out.println("resultado vacio");
         }
     }
 
-    public static ResultSet obtenerPacientesPorEspecialidad(int especialidad){
+    public static void obtenerPacientesPorEspecialidad(int especialidad){
         try {
-            PreparedStatement postgre = conexionPostgre.prepareStatement("select id_tratamiento from hospital.tratamientos where id_especialidad=?;");
+            PreparedStatement postgre = conexionPostgre.prepareStatement("select id_tratamiento from hospital.tratamientos" +
+                    " where id_especialidad=?;");
             postgre.setInt(1,especialidad);
+            postgre.execute();
+            ResultSet resultadoPostgre=postgre.getResultSet();
 
-            PreparedStatement mysql=conexionMysql.prepareStatement("select nombre from pacientes_tratamientos join pacientes on pacientes_tratamientos.id_paciente=pacientes.id_paciente where id_tratamiento=?;");
-            mysql.setInt(1,postgre.getResultSet().getInt(1));
+            while (resultadoPostgre.next()) {
+                PreparedStatement mysql = conexionMysql.prepareStatement("select nombre from pacientes_tratamientos join pacientes on" +
+                        " pacientes_tratamientos.id_paciente=pacientes.id_paciente" +
+                        " where id_tratamiento=?;");
+                mysql.setInt(1, resultadoPostgre.getInt(1));
 
-            return mysql.getResultSet();
+                ResultSet resultadoMy = mysql.executeQuery();
+                while (resultadoMy.next()) {
+                    System.out.println(resultadoMy.getString(1));
+                }
+            }
 
         } catch (SQLException e) {
             System.out.println("sucedio un error en una de las consultas");
-            return null;
+        }
+        catch (NullPointerException e){
+            System.out.println("resultado vacio");
         }
     }
 
