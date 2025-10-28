@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.prueba1.PrincipalController">
+   <children>
+      <Button fx:id="btsEnviar" layoutX="215.0" layoutY="311.0" mnemonicParsing="false" onAction="#switchFinal" prefHeight="25.0" prefWidth="133.0" text="enviar" />
+      <Label layoutX="98.0" layoutY="120.0" text="nombre" />
+      <Label layoutX="98.0" layoutY="192.0" prefHeight="17.0" prefWidth="34.0" text="apell" />
+      <TextField fx:id="txnombre" layoutX="207.0" layoutY="116.0" />
+      <TextField fx:id="txapell" layoutX="207.0" layoutY="188.0" />
+   </children>
+</AnchorPane>

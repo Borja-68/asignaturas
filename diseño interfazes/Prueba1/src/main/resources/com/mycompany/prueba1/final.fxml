@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="404.0" prefWidth="482.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/25">
+   <children>
+      <Label layoutX="54.0" layoutY="32.0" prefHeight="81.0" prefWidth="386.0" text="guaraná" textFill="#09a40e">
+         <font>
+            <Font size="96.0" />
+         </font>
+      </Label>
+      <TextField layoutX="167.0" layoutY="214.0" />
+      <TextField layoutX="167.0" layoutY="286.0" />
+   </children>
+</AnchorPane>
