@@ -100,7 +100,7 @@ public class ActionMenu {
         int numero = -1;
         do {
             try {
-                System.out.println("introduzca la id del medico que quiere eliminar");
+                System.out.println("introduzca la id del paciente que quiere eliminar");
                 numero = input.nextInt();
                 input.nextLine();
 

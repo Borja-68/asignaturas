@@ -36,7 +36,11 @@ public class AccionesDB {
         try {
             Statement obenerMayorNumero = conexionPostgre.createStatement();
             obenerMayorNumero.execute("select max(id_medico)+1 from hospital.medicos");
-            int numero = obenerMayorNumero.getResultSet().getInt(1);
+            ResultSet maxnum=obenerMayorNumero.getResultSet();
+            int numero =-1;
+            while (maxnum.next()) {
+                numero =maxnum.getInt(1);
+            }
             obenerMayorNumero.close();
 
             PreparedStatement sql = conexionPostgre.prepareStatement("insert into hospital.medicos values(?,?,ROW(?,?,?,?));");
@@ -44,7 +48,7 @@ public class AccionesDB {
             sql.setString(2, nombreMedico);
             sql.setString(3, nombreMedico);
             sql.setString(4, nif);
-            sql.setString(5, "+34"+telefono);
+            sql.setString(5, Integer.toString(telefono));
             sql.setString(6, email);
 
             sql.executeUpdate();
@@ -70,7 +74,11 @@ public class AccionesDB {
         try {
             Statement obenerMayorNumero = conexionMysql.createStatement();
             obenerMayorNumero.execute("select max(id_paciente)+1 from pacientes");
-            int numero = obenerMayorNumero.getResultSet().getInt(1);
+            ResultSet maxnum=obenerMayorNumero.getResultSet();
+            int numero =-1;
+            while (maxnum.next()) {
+                numero =maxnum.getInt(1);
+            }
             obenerMayorNumero.close();
 
             PreparedStatement sql = conexionMysql.prepareStatement("insert into pacientes values(?,?,?,?);");
@@ -106,11 +114,15 @@ public class AccionesDB {
 
             Statement obenerMayorNumeroMysql = conexionMysql.createStatement();
             obenerMayorNumeroMysql.execute("select max(id_tratamiento)+1 from tratamientos");
-            int numeroMysql = obenerMayorNumeroMysql.getResultSet().getInt(1);
+            ResultSet maxnum=obenerMayorNumeroMysql.getResultSet();
+            int numero =-1;
+            while (maxnum.next()) {
+                numero =maxnum.getInt(1);
+            }
             obenerMayorNumeroMysql.close();
 
             PreparedStatement mySql = conexionMysql.prepareStatement("insert into tratamientos values(?,?,?);");
-            mySql.setInt(1, numeroMysql);
+            mySql.setInt(1, numero);
             mySql.setString(2, nombre);
             mySql.setString(3, descripcion);
             mySql.executeUpdate();
@@ -119,7 +131,7 @@ public class AccionesDB {
                     "values(?,(select id_medico from hospital.medicos where (contacto).nif=?)," +
                     "(select is_especialidad from hospital.especialidades where nombre_especialidad=?) );");
 
-            mySql.setInt(1, numeroMysql);
+            mySql.setInt(1, numero);
             mySql.setString(2, nifMedico);
             mySql.setString(3, nombreEspecialidad);
             postgre.executeUpdate();
@@ -160,7 +172,11 @@ public class AccionesDB {
             PreparedStatement numTratamiento = conexionMysql.prepareStatement("select id_tratamiento from tratamientos where nombre_tratamiento=?;");
             numTratamiento.setString(1, nombre);
 
-            int id_tratamieto = numTratamiento.getResultSet().getInt(1);
+            ResultSet numeroSelec=numTratamiento.executeQuery();
+            int id_tratamieto =-1;
+            while (numeroSelec.next()) {
+                id_tratamieto =numeroSelec.getInt(1);
+            }
 
             PreparedStatement mySql = conexionMysql.prepareStatement("delete from tratamientos where id_tratamiento=? ;");
             mySql.setInt(1, id_tratamieto);
@@ -348,7 +364,7 @@ public class AccionesDB {
             PreparedStatement postgre = conexionPostgre.prepareStatement("select * from hospital.medicos where id_medico=?;");
             postgre.setInt(1, id);
 
-            return emptyresult(postgre.getResultSet());
+            return emptyresult(postgre.executeQuery());
 
         } catch (SQLException e) {
             System.out.println("error en la consulta de comprobacion");
@@ -359,6 +375,7 @@ public class AccionesDB {
     private static boolean emptyresult(ResultSet result){
         try{
             while (result.next()){
+                return true;
             }
             return true;
         } catch (SQLException e) {
