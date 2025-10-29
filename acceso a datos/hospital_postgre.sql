@@ -39,9 +39,9 @@ id_tratamiento integer primary key,
 id_medico integer,
 id_especialidad integer,
 foreign key (id_medico) references hospital.Medicos(id_medico)
-on delete cascade on update cascade,
+on delete set Null on update cascade,
 foreign key(id_especialidad) references hospital.Especialidades(id_especialidad)
-on delete cascade on update cascade
+on delete set Null on update cascade
 );
 
 create table hospital.Salas_Tratamientos(

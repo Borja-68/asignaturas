@@ -1,4 +1,3 @@
-import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -40,7 +39,8 @@ public class ActionMenu {
                     case 10: listaSalasTratamiento(); break;
                     case 11: devueveDatosTratamiento(); break;
                     case 12: obtenerPacientesPorEspecialidad(input); break;
-                    case 13: input.close(); AccionesDB.close(); salir=true; break;
+                    case 13: input.close();
+                        AccionesMysql.close(); AccionesPostgre.close(); AccionMixta.close(); salir=true; break;
                     default: System.out.println("opcion seleccionada no valida");break;
 
                 }
@@ -54,18 +54,18 @@ public class ActionMenu {
     private static void nuevaEspecialidad(Scanner input){
         System.out.println("introduzca el nombre de la especialidad");
         String nombreEspecialidad = getNormalString(input);
-        AccionesDB.nuevaEspecialidad(nombreEspecialidad);
+        AccionesPostgre.nuevaEspecialidad(nombreEspecialidad);
     }
 
     private static  void nuevomedico(Scanner input){
         System.out.println("introduzca el nombre del medico");
         String nombreMedico = getNormalString(input);
         Contacto contacto = creaContacto(input);
-        AccionesDB.nuevoMedico(nombreMedico,contacto.getNif(),contacto.getTelefono(),contacto.getCorreo());
+        AccionesPostgre.nuevoMedico(nombreMedico,contacto.getNif(),contacto.getTelefono(),contacto.getCorreo());
     }
 
     public static void quitaMedico(Scanner input){
-       if (AccionesDB.anyMedicExists()){
+       if (AccionesPostgre.anyMedicExists()){
             int numero = -1;
             do {
                 try {
@@ -77,8 +77,8 @@ public class ActionMenu {
                     System.out.println("lo introducido no fue un numero");
                     input.nextLine();
                 }
-            } while (!AccionesDB.medicExist(numero));
-            AccionesDB.quitaMedico(numero);
+            } while (!AccionesPostgre.medicExist(numero));
+           AccionesPostgre.quitaMedico(numero);
         }
     }
 
@@ -92,24 +92,26 @@ public class ActionMenu {
         if (!email.contains("@gmail.com")) email = email + "@gmail.com";
 
         LocalDate fecha= LocalDate.parse(getFecha(input));
-        AccionesDB.nuevoPaciente(nombre,email,fecha);
+        AccionesMysql.nuevoPaciente(nombre,email,fecha);
 
     }
 
     public static void quitaPaciente(Scanner input){
         int numero = -1;
-        do {
-            try {
-                System.out.println("introduzca la id del paciente que quiere eliminar");
-                numero = input.nextInt();
-                input.nextLine();
+        if (AccionesMysql.anyPaciente()){
+            do {
+                try {
+                    System.out.println("introduzca la id del paciente que quiere eliminar");
+                    numero = input.nextInt();
+                    input.nextLine();
 
-            } catch (InputMismatchException e) {
-                System.out.println("lo introducido no fue un numero");
-                input.nextLine();
-            }
-        } while (numero <= 0);
-        AccionesDB.quitaPaciente(numero);
+                } catch (InputMismatchException e) {
+                    System.out.println("lo introducido no fue un numero");
+                    input.nextLine();
+                }
+            } while (!AccionesMysql.pacienteExist(numero));
+            AccionesMysql.quitaPaciente(numero);
+        }
     }
 
     public  static  void creaTratamiento(Scanner input){
@@ -130,14 +132,14 @@ public class ActionMenu {
             input.nextLine();
         } while (!Contacto.nifCorrecto(nif));
 
-        AccionesDB.creaTratamiento(nombre,descripcion,nombreEspecialidad,nif);
+        AccionMixta.creaTratamiento(nombre,descripcion,nombreEspecialidad,nif);
     }
 
     public static void quitaTratamiento(Scanner input){
         System.out.println("introduce el nombre del tratamiento");
         String nombre = getNormalString(input);
 
-        AccionesDB.borraTratamiento(nombre);
+        AccionMixta.borraTratamiento(nombre);
     }
 
     public  static void listarTratamientosPorPaciente(Scanner input){
@@ -154,23 +156,24 @@ public class ActionMenu {
             }
 
         } while (maxPacientes <= 0);
-        AccionesDB.pacientesPorTratamiento(maxPacientes);
+        AccionesMysql.pacientesPorTratamiento(maxPacientes);
 
     }
 
     public  static void listaCitasPaciente(){
-        AccionesDB.listaCitasPaciente();
+        AccionesMysql.listaCitasPaciente();
     }
 
     public  static void listaSalasTratamiento(){
-        AccionesDB.listaSalasTratamiento();
+        AccionesPostgre.listaSalasTratamiento();
     }
 
     public static void devueveDatosTratamiento(){
-        AccionesDB.devueveDatosTratamiento();
+        AccionMixta.devueveDatosTratamiento();
     }
 
     public static void obtenerPacientesPorEspecialidad(Scanner input){
+
         int id_especialidad = -1;
         do {
             try {
@@ -184,7 +187,7 @@ public class ActionMenu {
             }
 
         } while (id_especialidad <= 0);
-        AccionesDB.obtenerPacientesPorEspecialidad(id_especialidad);
+        AccionMixta.obtenerPacientesPorEspecialidad(id_especialidad);
     }
 
     private static String getNormalString(Scanner input){
@@ -225,51 +228,52 @@ public class ActionMenu {
 
 
     private static String getFecha(Scanner input){
-        int anio=-1;
-        int mes=-1;
-        int dia=-1;
+        String anio="-1";
+        String mes="-1";
+        String dia="-1";
         do {
             try {
+
                 System.out.println("introduce el año entre 1925 y 2025");
-                anio=input.nextInt();
+                anio=input.next();
                 input.nextLine();
-
-            }catch (InputMismatchException e){
-                System.out.println("no se introdujo un numero");
-                input.nextLine();
+                Integer.parseInt(anio);
+            } catch (NumberFormatException e){
+                System.out.println("introduzca numeros");
+                anio="-1";
             }
-        }while (anio<1925 || anio>2025);
+        }while (Integer.parseInt(anio)<1925 || Integer.parseInt(anio)>2025 || anio.length()!=4);
 
         do {
             try {
-                System.out.println("introduce el mes entre 1 y 12");
-                mes=input.nextInt();
+                System.out.println("introduce el mes entre 01 y 12");
+                mes = input.next();
                 input.nextLine();
-
-            }catch (InputMismatchException e){
-                System.out.println("no se introdujo un numero");
-                input.nextLine();
-            }
-        }while (mes<1 || mes>12);
+                Integer.parseInt(mes);
+            }catch (NumberFormatException e){
+                    System.out.println("introduzca numeros");
+                    mes="-1";
+                }
+        }while (Integer.parseInt(mes)<1 || Integer.parseInt(mes)>12 || mes.length()!=2);
 
         int maximoDias=-1;
         switch (mes){
-            case 1,3,5,7,8,10,12:maximoDias=31; break;
-            case 2:maximoDias=28; break;
-            case 4,6,9,11:maximoDias=28; break;
+            case "01","03","05","07","08","10","12":maximoDias=31; break;
+            case "02":maximoDias=28; break;
+            case "04","06","09","11":maximoDias=28; break;
         }
 
         do{
             try{
-                System.out.println("introduce el dia entre 1 y "+maximoDias);
-                dia=input.nextInt();
+                System.out.println("introduce el dia entre 01 y "+maximoDias);
+                dia=input.next();
                 input.nextLine();
-
-            }catch (InputMismatchException e){
-                System.out.println("no se introdujo un numero");
-                input.nextLine();
+                Integer.parseInt(dia);
+            }catch (NumberFormatException e){
+                System.out.println("introduzca numeros");
+                dia="-1";
             }
-        }while (dia<1 || dia>maximoDias);
+        }while (Integer.parseInt(dia)<1 || Integer.parseInt(dia)>maximoDias || dia.length()!=2);
         return anio+"-"+mes+"-"+dia;
     }
 
