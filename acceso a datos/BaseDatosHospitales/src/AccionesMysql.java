@@ -4,7 +4,7 @@ import java.time.LocalDate;
 public class AccionesMysql {
     static Connection conexionMysql = ConexionesDB.getConectionMysql();
 
-    public static void nuevoPaciente(String nombre, String email, LocalDate fechaNacimiento) {
+    public static void crearPaciente(String nombre, String email, LocalDate fechaNacimiento) {
         try {
             Statement obenerMayorNumero = conexionMysql.createStatement();
             obenerMayorNumero.execute("select max(id_paciente)+1 from pacientes");
@@ -28,7 +28,7 @@ public class AccionesMysql {
         }
     }
 
-    public static void quitaPaciente(int numero) {
+    public static void eliminarPaciente(int numero) {
         try {
             PreparedStatement sql = conexionMysql.prepareStatement("delete from pacientes where id_paciente=?;");
             sql.setInt(1, numero);
@@ -40,7 +40,7 @@ public class AccionesMysql {
         }
     }
 
-    public static void pacientesPorTratamiento(int cantidad) {
+    public static void listarTratamientosConPocosPacientes(int cantidad) {
         try {
 
             PreparedStatement mySql = conexionMysql.prepareStatement("select  nombre_tratamiento,count(id_paciente) " +
@@ -63,7 +63,7 @@ public class AccionesMysql {
         }
     }
 
-    public static void listaCitasPaciente() {
+    public static void obtenerTotalCitasPorPaciente() {
         try {
 
             Statement mysql = conexionMysql.createStatement();
@@ -97,19 +97,53 @@ public class AccionesMysql {
 
     }
 
+    public static void listaIdPacientes() {
+        try {
+            Statement mysql = conexionMysql.createStatement();
+            mysql.execute("select id_paciente from pacientes;");
+            ResultSet resultado= mysql.getResultSet();
+            while (resultado.next()){
+                System.out.println(resultado.getInt(1));
+            }
+
+        } catch (SQLException e) {
+            System.err.println("consulta no realizada, sucedio un error");
+        }
+        catch (NullPointerException e){
+            System.out.println("no existen especialidades");
+        }
+    }
+    public static void listaNombreTratamientos() {
+        try {
+            Statement mysql = conexionMysql.createStatement();
+            mysql.execute("select nombre_tratamiento from tratamientos;");
+            ResultSet resultado= mysql.getResultSet();
+            while (resultado.next()){
+                System.out.println(resultado.getString(1));
+            }
+
+        } catch (SQLException e) {
+            System.err.println("consulta no realizada, sucedio un error");
+        }
+        catch (NullPointerException e){
+            System.out.println("no existen especialidades");
+        }
+
+
+    }
+
     public static boolean pacienteExist(int id) {
         try {
 
-            PreparedStatement postgre = conexionMysql.prepareStatement("select * from hospital.medicos where id_medico=?;");
+            PreparedStatement postgre = conexionMysql.prepareStatement("select * from pacientes where id_paciente=?;");
             postgre.setInt(1, id);
 
-            emptyresult(postgre.executeQuery());
+            return emptyresult(postgre.executeQuery());
 
         } catch (SQLException e) {
             System.out.println("error en la consulta de comprobacion");
             return false;
         }
-        return false;
     }
 
     private static boolean emptyresult(ResultSet result){
@@ -117,7 +151,7 @@ public class AccionesMysql {
             while (result.next()){
                 return true;
             }
-            return true;
+            return false;
         } catch (SQLException e) {
             return false;
         }

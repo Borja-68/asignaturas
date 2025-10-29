@@ -1,12 +1,10 @@
 public class Contacto {
-    private String nombreContacto;
     private String nif;
     private int telefono;
     private String correo;
 
     public Contacto(){}
-    public Contacto(String nombreContacto,String nif,int telefono,String correo){
-        this.nombreContacto=nombreContacto;
+    public Contacto(String nif,int telefono,String correo){
         this.nif=nif;
         this.telefono=telefono;
         if(correo.contains("@gmail.com"))this.correo=correo;

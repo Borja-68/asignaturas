@@ -4,7 +4,7 @@ public class AccionMixta {
     static Connection conexionMysql = ConexionesDB.getConectionMysql();
     private static Connection conexionPostgre=ConexionesDB.getConectionPostgre();;
 
-    public static void creaTratamiento(String nombre, String descripcion, String nombreEspecialidad, String nifMedico) {
+    public static void crearTratamiento(String nombre, String descripcion, String nombreEspecialidad, String nifMedico) {
         try {
             AccionesMysql.conexionMysql.setAutoCommit(false);
             conexionPostgre.setAutoCommit(false);
@@ -25,8 +25,8 @@ public class AccionMixta {
             mySql.executeUpdate();
 
             PreparedStatement postgre = conexionPostgre.prepareStatement("insert into hospital.tratamientos " +
-                    "values(?,(select id_medico from hospital.medicos where (contacto).nif=?)," +
-                    "(select id_especialidad from hospital.especialidades where nombre_especialidad=?) );");
+                    "values(?,(select id_medico from hospital.medicos where (contacto).nif=? limit 1)," +
+                    "(select id_especialidad from hospital.especialidades where nombre_especialidad=? limit 1) );");
 
             postgre.setInt(1, numero);
             postgre.setString(2, nifMedico);
@@ -60,7 +60,7 @@ public class AccionMixta {
 
     }
 
-    public static void borraTratamiento(String nombre) {
+    public static void eliminarTratamientoPorNombre(String nombre) {
         try {
             AccionesMysql.conexionMysql.setAutoCommit(false);
             conexionPostgre.setAutoCommit(false);
@@ -108,7 +108,7 @@ public class AccionMixta {
 
     }
 
-    public static void devueveDatosTratamiento() {
+    public static void listarTratamientosConEspecialidadYMedico() {
         try {
             Statement postgre = conexionPostgre.createStatement();
             postgre.execute("select * from hospital.tratamientos;");
@@ -159,6 +159,10 @@ public class AccionMixta {
             System.out.println("resultado vacio");
         }
     }
+
+
+
+
     public static void close() {
         try {
             conexionMysql.close();

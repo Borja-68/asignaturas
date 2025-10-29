@@ -54,14 +54,14 @@ public class ActionMenu {
     private static void nuevaEspecialidad(Scanner input){
         System.out.println("introduzca el nombre de la especialidad");
         String nombreEspecialidad = getNormalString(input);
-        AccionesPostgre.nuevaEspecialidad(nombreEspecialidad);
+        AccionesPostgre.crearEspecialidad(nombreEspecialidad);
     }
 
     private static  void nuevomedico(Scanner input){
         System.out.println("introduzca el nombre del medico");
         String nombreMedico = getNormalString(input);
         Contacto contacto = creaContacto(input);
-        AccionesPostgre.nuevoMedico(nombreMedico,contacto.getNif(),contacto.getTelefono(),contacto.getCorreo());
+        AccionesPostgre.crearMedico(nombreMedico,contacto.getNif(),contacto.getTelefono(),contacto.getCorreo());
     }
 
     public static void quitaMedico(Scanner input){
@@ -69,6 +69,8 @@ public class ActionMenu {
             int numero = -1;
             do {
                 try {
+                    System.out.println("nombres medicos existentes");
+                    AccionesPostgre.listaIdMedicos();
                     System.out.println("introduzca la id del medico que quiere eliminar");
                     numero = input.nextInt();
                     input.nextLine();
@@ -78,7 +80,7 @@ public class ActionMenu {
                     input.nextLine();
                 }
             } while (!AccionesPostgre.medicExist(numero));
-           AccionesPostgre.quitaMedico(numero);
+           AccionesPostgre.eliminarMedico(numero);
         }
     }
 
@@ -92,7 +94,7 @@ public class ActionMenu {
         if (!email.contains("@gmail.com")) email = email + "@gmail.com";
 
         LocalDate fecha= LocalDate.parse(getFecha(input));
-        AccionesMysql.nuevoPaciente(nombre,email,fecha);
+        AccionesMysql.crearPaciente(nombre,email,fecha);
 
     }
 
@@ -101,6 +103,8 @@ public class ActionMenu {
         if (AccionesMysql.anyPaciente()){
             do {
                 try {
+                    System.out.println("ids pacientes existentes");
+                    AccionesMysql.listaIdPacientes();
                     System.out.println("introduzca la id del paciente que quiere eliminar");
                     numero = input.nextInt();
                     input.nextLine();
@@ -110,7 +114,7 @@ public class ActionMenu {
                     input.nextLine();
                 }
             } while (!AccionesMysql.pacienteExist(numero));
-            AccionesMysql.quitaPaciente(numero);
+            AccionesMysql.eliminarPaciente(numero);
         }
     }
 
@@ -120,26 +124,34 @@ public class ActionMenu {
         String nombre = getNormalString(input);
 
         System.out.println("introduce la descripcion tratamiento");
-        String descripcion = getNormalString(input);
+        String descripcion = input.next();
+        input.nextLine();
 
+        System.out.println("nombres especialidades existentes");
+        AccionesPostgre.listaNombreEspecialidades();
         System.out.println("introduzca la nombre de la especialidad");
+
         String nombreEspecialidad = getNormalString(input);
 
         String nif = "";
         do {
+            System.out.println("nifs medicos existentes");
+            AccionesPostgre.listaNifMedicos();
             System.out.println("inserta el nif");
             nif = input.next();
             input.nextLine();
         } while (!Contacto.nifCorrecto(nif));
 
-        AccionMixta.creaTratamiento(nombre,descripcion,nombreEspecialidad,nif);
+        AccionMixta.crearTratamiento(nombre,descripcion,nombreEspecialidad,nif);
     }
 
     public static void quitaTratamiento(Scanner input){
+        System.out.println("nombres tratamientos existentes");
+        AccionesMysql.listaNombreTratamientos();
         System.out.println("introduce el nombre del tratamiento");
         String nombre = getNormalString(input);
 
-        AccionMixta.borraTratamiento(nombre);
+        AccionMixta.eliminarTratamientoPorNombre(nombre);
     }
 
     public  static void listarTratamientosPorPaciente(Scanner input){
@@ -156,20 +168,20 @@ public class ActionMenu {
             }
 
         } while (maxPacientes <= 0);
-        AccionesMysql.pacientesPorTratamiento(maxPacientes);
+        AccionesMysql.listarTratamientosConPocosPacientes(maxPacientes);
 
     }
 
     public  static void listaCitasPaciente(){
-        AccionesMysql.listaCitasPaciente();
+        AccionesMysql.obtenerTotalCitasPorPaciente();
     }
 
     public  static void listaSalasTratamiento(){
-        AccionesPostgre.listaSalasTratamiento();
+        AccionesPostgre.obtenerCantidadTratamientosPorSala();
     }
 
     public static void devueveDatosTratamiento(){
-        AccionMixta.devueveDatosTratamiento();
+        AccionMixta.listarTratamientosConEspecialidadYMedico();
     }
 
     public static void obtenerPacientesPorEspecialidad(Scanner input){
@@ -177,10 +189,11 @@ public class ActionMenu {
         int id_especialidad = -1;
         do {
             try {
+                System.out.println("ids especialidades existentes");
+                AccionesPostgre.listaIdEspecialidades();
                 System.out.println("introduzca el numero de la especialidad deseada");
                 id_especialidad = input.nextInt();
                 input.nextLine();
-
             } catch (InputMismatchException e) {
                 System.out.println("lo introducido no fue un numero");
                 input.nextLine();
@@ -202,9 +215,6 @@ public class ActionMenu {
 
 
     private static Contacto creaContacto(Scanner input) {
-        System.out.println("inserta nombre del contacto");
-        String nombreContacto = getNormalString(input);
-
         String nif = "";
         do {
             System.out.println("inserta el nif");
@@ -222,7 +232,7 @@ public class ActionMenu {
         System.out.println("inserta el correo sin @gmail.com");
         String correo = getNormalString(input);
 
-        return new Contacto(nombreContacto, nif, Integer.parseInt(telefono), correo);
+        return new Contacto(nif, Integer.parseInt(telefono), correo);
     }
 
 
