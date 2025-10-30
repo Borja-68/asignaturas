@@ -2,7 +2,7 @@ import java.sql.*;
 
 public class AccionesPostgre {
     private static Connection conexionPostgre=ConexionesDB.getConectionPostgre();;
-    public static void nuevaEspecialidad(String nombreEspecialidad) {
+    public static void crearEspecialidad(String nombreEspecialidad) {
         try {
             Statement obenerMayorNumero = conexionPostgre.createStatement();
             obenerMayorNumero.execute("select max(id_especialidad)+1 from hospital.especialidades");
@@ -24,7 +24,7 @@ public class AccionesPostgre {
         }
     }
 
-    public static void nuevoMedico(String nombreMedico, String nif, int telefono, String email) {
+    public static void crearMedico(String nombreMedico, String nif, int telefono, String email) {
         try {
             Statement obenerMayorNumero = conexionPostgre.createStatement();
             obenerMayorNumero.execute("select max(id_medico)+1 from hospital.medicos");
@@ -50,7 +50,7 @@ public class AccionesPostgre {
         }
     }
 
-    public static void quitaMedico(int id) {
+    public static void eliminarMedico(int id) {
         try {
             PreparedStatement sql = conexionPostgre.prepareStatement("delete from hospital.medicos where id_medico=?;");
             sql.setInt(1, id);
@@ -62,7 +62,7 @@ public class AccionesPostgre {
         }
     }
 
-    public static void listaSalasTratamiento() {
+    public static void obtenerCantidadTratamientosPorSala() {
         try {
 
             Statement postgre = conexionPostgre.createStatement();
@@ -96,19 +96,87 @@ public class AccionesPostgre {
 
     }
 
+    public static void listaNifMedicos() {
+        try {
+            Statement postgre = conexionPostgre.createStatement();
+            postgre.execute("select (contacto).nif from hospital.medicos;");
+            ResultSet resultado= postgre.getResultSet();
+            while (resultado.next()){
+                System.out.println(resultado.getString(1));
+            }
+
+        } catch (SQLException e) {
+            System.err.println("consulta no realizada, sucedio un error");
+        }
+        catch (NullPointerException e){
+            System.out.println("no existen medicos");
+        }
+    }
+
+    public static void listaIdMedicos() {
+        try {
+            Statement postgre = conexionPostgre.createStatement();
+            postgre.execute("select id_medico from hospital.medicos;");
+            ResultSet resultado= postgre.getResultSet();
+            while (resultado.next()){
+                System.out.println(resultado.getString(1));
+            }
+
+        } catch (SQLException e) {
+            System.err.println("consulta no realizada, sucedio un error");
+        }
+        catch (NullPointerException e){
+            System.out.println("no existen medicos");
+        }
+    }
+
+    public static void listaNombreEspecialidades() {
+        try {
+            Statement postgre = conexionPostgre.createStatement();
+            postgre.execute("select nombre_especialidad from hospital.especialidades;");
+            ResultSet resultado= postgre.getResultSet();
+            while (resultado.next()){
+                System.out.println(resultado.getString(1));
+            }
+
+        } catch (SQLException e) {
+            System.err.println("consulta no realizada, sucedio un error");
+        }
+        catch (NullPointerException e){
+            System.out.println("no existen especialidades");
+        }
+    }
+
+    public static void listaIdEspecialidades() {
+        try {
+            Statement postgre = conexionPostgre.createStatement();
+            postgre.execute("select id_especialidad from hospital.especialidades;");
+            ResultSet resultado= postgre.getResultSet();
+            while (resultado.next()){
+                System.out.println(resultado.getInt(1));
+            }
+
+        } catch (SQLException e) {
+            System.err.println("consulta no realizada, sucedio un error");
+        }
+        catch (NullPointerException e){
+            System.out.println("no existen especialidades");
+        }
+    }
+
     public static boolean medicExist(int id) {
         try {
 
             PreparedStatement postgre = conexionPostgre.prepareStatement("select * from hospital.medicos where id_medico=?;");
             postgre.setInt(1, id);
 
-            emptyresult(postgre.executeQuery());
+            return emptyresult(postgre.executeQuery());
 
         } catch (SQLException e) {
             System.out.println("error en la consulta de comprobacion");
             return false;
         }
-        return false;
+
     }
 
     private static boolean emptyresult(ResultSet result){
@@ -116,7 +184,7 @@ public class AccionesPostgre {
             while (result.next()){
                 return true;
             }
-            return true;
+            return  false;
         } catch (SQLException e) {
             return false;
         }
