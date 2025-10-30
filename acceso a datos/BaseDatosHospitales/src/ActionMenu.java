@@ -89,9 +89,9 @@ public class ActionMenu {
         System.out.println("introduce el nombre");
         String nombre = getNormalString(input);
 
-        System.out.println("introduce el correo, sin @gmail.com");
-        String email = getNormalString(input);
-        if (!email.contains("@gmail.com")) email = email + "@gmail.com";
+
+
+        String email = creaCorreo(input);;
 
         LocalDate fecha= LocalDate.parse(getFecha(input));
         AccionesMysql.crearPaciente(nombre,email,fecha);
@@ -229,8 +229,7 @@ public class ActionMenu {
             input.nextLine();
         } while (!Contacto.telefonoCorrecto(telefono));
 
-        System.out.println("inserta el correo sin @gmail.com");
-        String correo = getNormalString(input);
+        String correo=creaCorreo(input);
 
         return new Contacto(nif, Integer.parseInt(telefono), correo);
     }
@@ -287,5 +286,15 @@ public class ActionMenu {
         return anio+"-"+mes+"-"+dia;
     }
 
+    private static String creaCorreo(Scanner input){
+        String correo="";
+        do{
+            System.out.println("inserta el correo,90 caracteres máximo sin @gmail.com");
+            correo=input.next();
+            input.nextLine();
+            if(!correo.contains("@gmail.com")) correo=correo+"@gmail.com";
+        }while (correo.length()>100);
+        return correo;
+    }
 
 }

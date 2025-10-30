@@ -40,7 +40,7 @@ public class AccionesPostgre {
             sql.setString(2, nombreMedico);
             sql.setString(3, nombreMedico);
             sql.setString(4, nif);
-            sql.setString(5, Integer.toString(telefono));
+            sql.setString(5,"+34"+telefono);
             sql.setString(6, email);
 
             sql.executeUpdate();
