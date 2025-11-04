@@ -25,7 +25,7 @@ id_especialidad serial primary key,
 nombre_especialidad varchar(100)
 );
 
-create type hospital.datos_contacto as(nombre_contacto varchar(100),nif varchar(9),telefono varchar(9),email varchar(100));
+create type hospital.datos_contacto as(nombre_contacto varchar(100),nif varchar(9),telefono varchar(12),email varchar(100));
 
 create table hospital.Medicos(
 id_medico serial primary key,
