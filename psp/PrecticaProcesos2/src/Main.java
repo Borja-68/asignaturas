@@ -2,14 +2,16 @@
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
-
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+        HiloSimple hs1=new HiloSimple("hilo1");
+        HiloSimple hs2=new HiloSimple("hilo2");
+        HiloSimple hs3=new HiloSimple("hilo3");
+        HiloSimple hs4=new HiloSimple("hilo4");
+        hs1.start();
+        hs2.start();
+        hs3.start();
+        hs4.start();
+        for(int i=0; i<5;i++){
+            System.out.println("fuera del hilo...");
         }
     }
 }
