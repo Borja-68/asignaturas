@@ -60,10 +60,10 @@ public class PrimaryController implements Initializable {
     
 public void handlebtnReservas(ActionEvent event) throws IOException{
  Stage stage =(Stage) btnReservas.getScene().getWindow();
- Parent root = FXMLLoader.load(getClass().getResource("FormularioPrincipal.fxml"));
+ Parent root = FXMLLoader.load(getClass().getResource("primary.fxml"));
 if(event.getSource()==btnReservas){
  stage=(Stage) btnReservas.getScene().getWindow();
- root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+ root = FXMLLoader.load(getClass().getResource("secondary.fxml"));
 }
  Scene scene = new Scene(root);
  stage.setScene(scene);
