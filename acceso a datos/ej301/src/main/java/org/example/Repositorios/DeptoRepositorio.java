@@ -1,21 +1,21 @@
-package Repositorios;
+package org.example.Repositorios;
 
+import org.example.Entidades.Depto;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import Entidades.Emp;
 
-public class EmpRepositorio implements Repositorio<Emp>{
+public class DeptoRepositorio implements Repositorio<Depto>{
 
     private Session session;
 
-    public EmpRepositorio(Session session) {
+    public DeptoRepositorio(Session session) {
         super();
         this.session = session;
     }
 
     @Override
-    public void guardar(Emp t) {
+    public void guardar(Depto t) {
         Transaction trx = this.session.beginTransaction();
         session.persist(t);
         trx.commit();

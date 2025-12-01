@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,9 +15,9 @@ import java.util.List;
 @NoArgsConstructor
 @RequiredArgsConstructor
 public class Depto{
+    @Column(name = "dep_id",columnDefinition = "Integer")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "dep_id")
     private int id;
 
     @NonNull
@@ -27,11 +26,11 @@ public class Depto{
     @NonNull
     private String localidad;
 
-    @OneToMany(mappedBy = "departamento")
-    private List<Emp> empleados=new ArrayList<Emp>();
+    @OneToMany(mappedBy = "departamento",cascade = CascadeType.ALL)
+    private List<Emp> empleados=new ArrayList<>();
 
 
-    public  void nuevoEmpleado(Emp empleado){
+    public void nuevoEmpleado(Emp empleado){
         empleados.add(empleado);
         empleado.setDepto(this);
     }

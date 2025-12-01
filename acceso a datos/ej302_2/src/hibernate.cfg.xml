@@ -8,8 +8,8 @@
         <property name="hbm2ddl.auto">create</property>
         <property name="hibernate.dialect.storage_engine">innodb</property>
         <property name="hibernate.show_sql">true</property>
-        <mapping class="org.example.Entidades.Depto"/>
-        <mapping class="org.example.Entidades.Emp"/>
+        <mapping class="Entidades.Depto"/>
+        <mapping class="Entidades.Emp"/>
     </session-factory>
 
 </hibernate-configuration>

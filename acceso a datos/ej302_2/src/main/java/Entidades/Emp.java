@@ -6,10 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
-import java.io.Serializable;
-
 @Entity
-@Table(name = "emps")
+@Table(name = "Emps")
 @Data
 @NoArgsConstructor
 @RequiredArgsConstructor
@@ -30,7 +28,7 @@ public class Emp{
     @NonNull
     private boolean esJefe;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "dep_id")
     private Depto departamento;
 

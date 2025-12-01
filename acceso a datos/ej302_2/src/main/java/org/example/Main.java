@@ -1,9 +1,9 @@
 package org.example;
 
-import org.example.Entidades.Depto;
-import org.example.Entidades.Emp;
-import org.example.Repositorios.DeptoRepositorio;
-import org.example.Repositorios.EmpRepositorio;
+import Entidades.Depto;
+import Entidades.Emp;
+import Repositorios.DeptoRepositorio;
+import Repositorios.EmpRepositorio;
 import org.hibernate.Session;
 
 
@@ -64,6 +64,8 @@ public class Main {
         empRepositorio.guardar(emp8);
         empRepositorio.guardar(emp9);
         empRepositorio.guardar(emp10);
+
+        dptoRepositorio.visualizarDepartamento(1);
         session.close();
         System.out.println("Finalizando la conexion a MySQL");
     }
