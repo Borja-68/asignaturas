@@ -36,4 +36,9 @@ public class Emp{
     public void setDepto(Depto depto){
         this.departamento= depto;
     }
+
+    @Override
+    public String toString(){
+        return id+" "+nombre+" "+puesto+" "+sueldo+" "+edad+" "+DNI+" "+esJefe+" "+departamento.getId();
+    }
 }

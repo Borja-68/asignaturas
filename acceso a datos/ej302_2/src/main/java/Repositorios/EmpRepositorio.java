@@ -26,14 +26,18 @@ public class EmpRepositorio implements Repositorio<Emp>{
         Transaction trx = this.session.beginTransaction();
         Query queryNoJefe = session.createQuery("FROM Emp e WHERE e.departamento.id=:dep_id and e.esJefe=true");
         queryNoJefe.setParameter("dep_id", idDepartamento);
-        Emp empleadoNoJefe = (Emp) queryNoJefe.getSingleResult();
-        empleadoNoJefe.setEsJefe(false);
-        Query queryJefe = session.createQuery("FROM Emp e WHERE e.departamento.id=:dep_id and e.id=:id");
+        if(queryNoJefe.getSingleResult()!=null) {
+            Emp empleadoNoJefe = (Emp) queryNoJefe.getSingleResult();
+            empleadoNoJefe.setEsJefe(false);
+            session.merge(empleadoNoJefe);
+        }
+        Query queryJefe = session.createQuery("FROM Emp e WHERE e.departamento.id=:dep_id and e.id=:emp_id");
         queryJefe.setParameter("dep_id", idDepartamento);
-        queryJefe.setParameter("id", idEmpl);
-        Emp empleadoJefe = (Emp) queryNoJefe.getSingleResult();
+        queryJefe.setParameter("emp_id", idEmpl);
+        Emp empleadoJefe = (Emp) queryJefe.getSingleResult();
         empleadoJefe.setEsJefe(true);
-        session.merge(empleadoNoJefe);
+
+
         session.merge(empleadoJefe);
         trx.commit();
     }

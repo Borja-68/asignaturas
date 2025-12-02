@@ -31,7 +31,7 @@ public class DeptoRepositorio implements Repositorio<Depto>{
     }
 
     public void añadirEmpleado(int idDepartamento, Emp empleado){
-        Query query = session.createQuery("FROM Depto d WHERE d.id=:dep_id");
+        Query query = session.createQuery("FROM Depto d WHERE d.dep_id=:dep_id");
         query.setParameter("dep_id", idDepartamento);
         Depto departamento = (Depto) query.getSingleResult();
         departamento.nuevoEmpleado(empleado);
@@ -39,7 +39,7 @@ public class DeptoRepositorio implements Repositorio<Depto>{
         empRepositorio.guardar(empleado);
     }
     public void eliminarDepartamento(int id){
-        Query query = session.createQuery("FROM Depto d WHERE d.id=:dep_id");
+        Query query = session.createQuery("FROM Depto d WHERE d.dep_id=:id");
         query.setParameter("dep_id", id);
         Depto departamento = (Depto) query.getSingleResult();
         session.remove(departamento);

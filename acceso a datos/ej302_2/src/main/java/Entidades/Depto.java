@@ -34,4 +34,9 @@ public class Depto{
         empleados.add(empleado);
         empleado.setDepto(this);
     }
+
+    @Override
+    public String toString(){
+        return id+" "+nombre+" "+localidad+" "+this.getEmpleados();
+    }
 }

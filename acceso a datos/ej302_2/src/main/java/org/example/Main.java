@@ -66,6 +66,7 @@ public class Main {
         empRepositorio.guardar(emp10);
 
         dptoRepositorio.visualizarDepartamento(1);
+        empRepositorio.actualizarJefeDepartamento(1,2);
         session.close();
         System.out.println("Finalizando la conexion a MySQL");
     }
