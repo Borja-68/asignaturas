@@ -71,6 +71,10 @@ public class Main {
         empRepositorio.actualizarJefeDepartamento(1,2);
         dptoRepositorio.añadirEmpleado(1,empleadoEmp);
         dptoRepositorio.eliminarDepartamento(5);
+        empRepositorio.empleadosTécnicos();
+        empRepositorio.empleadoConMayorSueldo();
+        empRepositorio.aumentarSalarioJefes(100);
+        empRepositorio.borrarEmpleadosDepartamento(4);
         session.close();
         System.out.println("Finalizando la conexion a MySQL");
     }

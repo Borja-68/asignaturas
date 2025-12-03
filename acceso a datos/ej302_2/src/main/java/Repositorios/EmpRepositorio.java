@@ -36,8 +36,6 @@ public class EmpRepositorio implements Repositorio<Emp>{
         queryJefe.setParameter("emp_id", idEmpl);
         Emp empleadoJefe = (Emp) queryJefe.getSingleResult();
         empleadoJefe.setEsJefe(true);
-
-
         session.merge(empleadoJefe);
         trx.commit();
     }
