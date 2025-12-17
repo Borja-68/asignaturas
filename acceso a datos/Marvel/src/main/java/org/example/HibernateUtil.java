@@ -17,7 +17,8 @@ public class HibernateUtil {
             SESSION_FACTORY = new Configuration().configure(hibernatePropsFile).buildSessionFactory();
 
         }catch(Throwable ex) {
-            System.err.println("Error al crear la configuración de hibernate" + ex.getMessage());
+            System.err.println("Error al crear la configuración de hibernate");
+            ex.printStackTrace();
             throw new ExceptionInInitializerError();
         }
     }

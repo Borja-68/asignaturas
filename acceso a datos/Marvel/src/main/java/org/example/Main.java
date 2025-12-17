@@ -1,80 +1,98 @@
 package org.example;
 import Entidades.*;
+import Repositorios.*;
 import org.hibernate.Session;
+
+import java.util.Scanner;
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
+    private static String pregunta=
+            "1 crear personaje"+"\n"+
+            "2 borrar personaje"+"\n"+
+            "3 modificar personaje"+"\n"+
+            "4 crear habilidad"+"\n"+
+            "5 borrar habilidad"+"\n"+
+            "6 modificar habilidad"+"\n"+
+            "7 asignar habilidada personaje"+"\n"+
+            "8 registrar participacien en evento de un personaje"+"\n"+
+            "9 cambiar traje personaje"+"\n"+
+            "10 mostrar datos personaje"+"\n"+
+            "11 mostrar personajes de evento determinado"+"\n"+
+            "12 mostrar cantidad de personajes con habilidad concreta"+"\n"+
+            "13 salir"+"\n";
+
     public static void main(String[] args) {
         System.out.println("Test");
 
         Session session = HibernateUtil.get().openSession();
-        Traje traje1=new Traje("Armadura Mark LXXXV con nanobots");
-        Traje traje2=new Traje("Traje de vibranium con escudo magnético");
-        Traje traje3=new Traje("Traje de batalla psíquico");
-        Traje traje4=new Traje("Traje de combate reforzado con adamantium");
-        Traje traje5=new Traje("Uniforme espacial con propulsores");
+        Scanner input=new Scanner(System.in);
 
-        Personaje per1=new Personaje("Tony Stark", "Iron Man");
-        Personaje per2=new Personaje("Steve Rogers","Capitán América");
-        Personaje per3=new Personaje("Jean Grey","Phoenix");
-        Personaje per4=new Personaje("Logan","Wolverine");
-        Personaje per5=new Personaje("Peter Quill","Star-Lord");
+        EventoRepositorio repEven=new EventoRepositorio(session);
+        HabilidadRepositorio repHab=new HabilidadRepositorio(session);
+        ParticipaRepositorio repParticip= new ParticipaRepositorio(session);
+        PersonajeRepositorio repPersonaj=new PersonajeRepositorio(session);
+        TrajeRepositorio repTraj=new TrajeRepositorio(session);
+        boolean salir=false;
+        do{
+            System.out.println(pregunta);
+            int id;
+            int opcion=input.nextInt();
+            switch (opcion){
+                case 1: Personaje personaje=creaPersonaje(input);
+                        repPersonaj.guardar(personaje);
+                        break;
 
-        per1.setTraje(traje1);
-        per2.setTraje(traje2);
-        per3.setTraje(traje3);
-        per4.setTraje(traje4);
-        per5.setTraje(traje5);
+                case 2:
+                        id=input.nextInt();
+                        repPersonaj.borrar(id);
+                        break;
 
-        Habilidad hab1=new Habilidad("Vuelo","Capacidad de desplazarse por el aire");
-        Habilidad hab2=new Habilidad("Superfuerza","Fuerza física muy superior a la humana");
-        Habilidad hab3=new Habilidad("Regeneración","Curación acelerada de heridas");
-        Habilidad hab4=new Habilidad("Telepatía","Habilidad para leer y controlar mentes");
-        Habilidad hab5=new Habilidad("Combate cuerpo a cuerpo","Entrenamiento avanzado en lucha");
+                case 3: Personaje personajeCambio=creaPersonaje(input);
+                        id=input.nextInt();
+                        repPersonaj.modificar(id,personajeCambio);
+                        break;
 
-        PersonajeHabilidad perhab1=new PersonajeHabilidad();
-        PersonajeHabilidad perhab2=new PersonajeHabilidad();
-        PersonajeHabilidad perhab3=new PersonajeHabilidad();
-        PersonajeHabilidad perhab4=new PersonajeHabilidad();
-        PersonajeHabilidad perhab5=new PersonajeHabilidad();
-        PersonajeHabilidad perhab6=new PersonajeHabilidad();
-        PersonajeHabilidad perhab7=new PersonajeHabilidad();
-        PersonajeHabilidad perhab8=new PersonajeHabilidad();
-        PersonajeHabilidad perhab9=new PersonajeHabilidad();
+                case 4: break;
+                case 5: break;
+                case 6: break;
+                case 7: break;
+                case 8: break;
+                case 9: break;
+                case 10: break;
+                case 11: break;
+                case 12: break;
+                case 13:salir=true; break;
+                default:System.out.println("opcion no valida"); break;
 
-        perhab1.setPersonaje(per1);
-        perhab2.setPersonaje(per1);
-        perhab3.setPersonaje(per2);
-        perhab4.setPersonaje(per2);
-        perhab5.setPersonaje(per3);
-        perhab6.setPersonaje(per4);
-        perhab7.setPersonaje(per4);
-        perhab8.setPersonaje(per5);
-        perhab9.setPersonaje(per5);
-
-        perhab1.setHabilidad(hab1);
-        perhab2.setHabilidad(hab2);
-        perhab3.setHabilidad(hab2);
-        perhab4.setHabilidad(hab5);
-        perhab5.setHabilidad(hab4);
-        perhab6.setHabilidad(hab3);
-        perhab7.setHabilidad(hab5);
-        perhab8.setHabilidad(hab1);
-        perhab9.setHabilidad(hab5);
-
-        Evento ev1=new Evento("Batalla de Nueva York","Nueva York");
-        Evento ev2=new Evento("Guerra Civil","Leipzig-Halle");
-        Evento ev3=new Evento("Infinity War","Titán");
-
-        Participa par1=new Participa("2012-05-04","Líder tecnológico");
-        Participa par2=new Participa("2012-05-04","Combatiente principal");
-        Participa par3=new Participa("2016-05-06","Líder del bando legalista");
-        Participa par4=new Participa("2018-04-27","Apoyo mental");
-        Participa par5=new Participa("2018-04-27","Tanque ofensivo");
-        Participa par6=new Participa("2018-04-27","Explorador espacial");
+            }
+        }while (!salir);
 
 
         session.close();
         System.out.println("Finalizando la conexion a MySQL");
+    }
+
+    public static Personaje creaPersonaje(Scanner sc){
+        System.out.println("introduce el nombre del persoonaje");
+        String nombre=sc.next();
+
+        System.out.println("introduce el alias del persoonaje");
+        String alias=sc.next();
+
+        Personaje personaje=new Personaje(nombre,alias);
+        return personaje;
+    }
+
+    public static Personaje creaHabilidad(Scanner sc){
+        System.out.println("introduce el nombre de la habilidad");
+        String nombre=sc.next();
+
+        System.out.println("introduce la descripcion de la habilidad");
+        String alias=sc.next();
+
+        Personaje personaje=new Personaje(nombre,alias);
+        return personaje;
     }
 }

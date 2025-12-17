@@ -9,19 +9,23 @@ import lombok.RequiredArgsConstructor;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "Eventos")
 @Data
 @NoArgsConstructor
 @RequiredArgsConstructor
 public class Participa {
-    @Id
+    @EmbeddedId
+    ParticipaPK id;
+
+
     @ManyToOne(cascade = CascadeType.ALL)
+    @MapsId("personajeId")
     @JoinColumn(name = "id_personaje")
     private Personaje personajeEvento;
 
-    @Id
+
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_habilidad")
+    @MapsId("eventoId")
+    @JoinColumn(name = "id_evento")
     private Evento eventoPersonaje;
 
     @NonNull
@@ -36,6 +40,7 @@ public class Participa {
         this.personajeEvento=personaje;
         personaje.addEvento(this);
     }
+
     public void setEvento(Evento evento){
         this.eventoPersonaje=evento;
         evento.addPersonaje(this);

@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "Habilidades")
 @Data
 @NoArgsConstructor
 @RequiredArgsConstructor
@@ -24,10 +23,12 @@ public class Habilidad {
     @NonNull
     @Column(columnDefinition = "TEXT")
     private String descripcion;
-    @OneToMany(mappedBy = "habilidadPersonaje",cascade = CascadeType.ALL)
-    private List<PersonajeHabilidad> personajes=new ArrayList<>();
 
-    public void addPersonaje(PersonajeHabilidad personaje){
-        personajes.add(personaje);
+    @ManyToMany(mappedBy = "listaHabilidades",cascade = CascadeType.ALL)
+    private List<Personaje> listaPersonajes;
+
+
+    public void addPersonaje(Personaje personaje){
+        listaPersonajes.add(personaje);
     }
 }

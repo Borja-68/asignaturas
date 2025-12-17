@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "Eventos")
 @Data
 @NoArgsConstructor
 @RequiredArgsConstructor
@@ -23,8 +22,10 @@ public class Evento {
     private String nombre;
     @NonNull
     private String lugar;
+
     @OneToMany(mappedBy = "eventoPersonaje",cascade = CascadeType.ALL)
     private List<Participa> personajes=new ArrayList<>();
+
     public void addPersonaje(Participa personaje){
         personajes.add(personaje);
     }

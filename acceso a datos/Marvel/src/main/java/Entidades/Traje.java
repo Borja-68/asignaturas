@@ -7,7 +7,6 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
 @Entity
-@Table(name = "Trajes")
 @Data
 @NoArgsConstructor
 @RequiredArgsConstructor
@@ -21,5 +20,9 @@ public class Traje {
     @OneToOne(mappedBy = "traje",cascade = CascadeType.ALL)
     private Personaje heroe;
 
+    @Override
+    public String toString(){
+        return id+" "+especificacion+" "+heroe.getId();
+    }
 
 }
