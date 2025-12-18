@@ -14,25 +14,42 @@ public class Filosofo implements Runnable {
     @Override
     public void run() {
     while(true){
+        Random random = new Random();
         synchronized (this) {
-            if (cubiertos[filosofo] && cubiertos[filosofo - 1]) {
+            if (cubiertos[filosofo] && cubiertos[getCubierto(filosofo)]) {
                 cubiertos[filosofo] = false;
-                cubiertos[filosofo - 1] = false;
+                cubiertos[getCubierto(filosofo)] = false;
+                for (Boolean valor:cubiertos){
+                    System.out.println(valor);
+                }
                 System.out.println("Filosofo " + filosofo + ", comiendo");
-                Random random = new Random();
                 try {
+                    Thread.sleep((random.nextInt(1000)));
                     System.out.println("Comí, Filosofo " + filosofo + ", pensando");
-                    Thread.sleep((random.nextInt(400)));
                     cubiertos[filosofo] = true;
-                    cubiertos[filosofo - 1] = true;
+                    cubiertos[getCubierto(filosofo)] = true;
                     Thread.sleep((1000 + random.nextInt(4000)));
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
             }
         }
-        if(!cubiertos[filosofo] || !cubiertos[filosofo - 1]) System.out.println("no pudo comer Filosofo "+filosofo+", pensando");
+        if(!cubiertos[filosofo] || !cubiertos[getCubierto(filosofo)]){
+            System.out.println("no pudo comer Filosofo "+filosofo+", pensando");
+            try {
+                Thread.sleep((random.nextInt(400)));
+            }
+            catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+
+        }
     }
 
+    }
+
+    private int getCubierto(int filosofo){
+        if(((cubiertos.length-1)-((cubiertos.length-1)-filosofo))==0)return (cubiertos.length-1);
+        else return (cubiertos.length-1)-((cubiertos.length-1)-filosofo);
     }
 }
