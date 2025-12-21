@@ -15,7 +15,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class Habilidad {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(columnDefinition = "Integer")
     private Integer id;
     @NonNull
@@ -24,11 +23,16 @@ public class Habilidad {
     @Column(columnDefinition = "TEXT")
     private String descripcion;
 
-    @ManyToMany(mappedBy = "listaHabilidades",cascade = CascadeType.ALL)
-    private List<Personaje> listaPersonajes;
+    @ManyToMany(mappedBy = "habilidades",cascade = CascadeType.ALL)
+    private List<Personaje> personajes =new ArrayList<>();
 
 
     public void addPersonaje(Personaje personaje){
-        listaPersonajes.add(personaje);
+        personajes.add(personaje);
+    }
+
+    @Override
+    public String toString(){
+        return id+", "+nombre+", "+descripcion;
     }
 }

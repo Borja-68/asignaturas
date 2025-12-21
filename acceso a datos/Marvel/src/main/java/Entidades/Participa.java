@@ -1,16 +1,15 @@
 package Entidades;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 @RequiredArgsConstructor
 public class Participa {
     @EmbeddedId
@@ -30,7 +29,7 @@ public class Participa {
 
     @NonNull
     @Column(columnDefinition = "DATE")
-    private String fecha;
+    private LocalDate fecha;
     @NonNull
     private String rol;
 
@@ -48,6 +47,6 @@ public class Participa {
 
     @Override
     public String toString(){
-        return personajeEvento.getId()+" "+eventoPersonaje.getId()+" "+fecha+" "+rol;
+        return personajeEvento.getId()+", "+eventoPersonaje.getId()+", "+fecha+", "+rol;
     }
 }
