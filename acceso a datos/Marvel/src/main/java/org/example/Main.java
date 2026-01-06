@@ -142,9 +142,10 @@ public class Main {
 
     public  static void borraHabilidad(Scanner sc){
         muestraIdsYNombre(repHab);
-        System.out.println("seleccione la id de la habilidad que quiere eliminar, numero");
-        int id=sc.nextInt();
-        repHab.borrar(repHab.getHabilidadPorId(id));
+        sc.nextLine();
+        System.out.println("seleccione la habilidad que quiere eliminar, nombre");
+        String hab=sc.nextLine();
+        repHab.borrar(repHab.getHabilidadPorNombre(hab));
     }
 
 
@@ -162,13 +163,14 @@ public class Main {
 
     public  static void anadirHabilidadHeroe(Scanner sc){
         muestraIdsYNombre(repPersonaj);
+        sc.nextLine();
         System.out.println("selecciona al heroe al que quieres darle la habilidad, escribe su nombre");
-        String nombreHeroe= sc.next();
+        String nombreHeroe= sc.nextLine();
         Personaje personaje=repPersonaj.getPersonajePorNombre(nombreHeroe);
 
         muestraIdsYNombre(repHab);
         System.out.println("selecciona la habilidad que quieres darle, escribe su nombre");
-        String nombreHab= sc.next();
+        String nombreHab= sc.nextLine();
         Habilidad habilidad=repHab.getHabilidadPorNombre(nombreHab);
 
         personaje.addHabilidad(habilidad);
@@ -178,8 +180,9 @@ public class Main {
 
     public  static void modificaTrajePersonaje(Scanner sc){
         muestraIdsYNombre(repPersonaj);
+        sc.nextLine();
         System.out.println("escribe el nombre de la persona que quiere modificar");
-        String nombre=sc.next();
+        String nombre=sc.nextLine();
         Personaje personajeOR=repPersonaj.getPersonajePorNombre(nombre);
 
         Traje nuevoTraje=creaTraje(sc);
@@ -191,8 +194,9 @@ public class Main {
 
     public  static void creaParticipacion(Scanner sc){
         muestraIdsYNombre(repPersonaj);
+        sc.nextLine();
         System.out.println("selecciona al heroe que atenderá el evento, escribe su nombre");
-        String nombreHeroe= sc.next();
+        String nombreHeroe=sc.nextLine();
         Personaje personaje=repPersonaj.getPersonajePorNombre(nombreHeroe);
 
         sc.nextLine();
@@ -206,8 +210,9 @@ public class Main {
         System.out.println("escribe la fecha, como 2015-02-22");
         LocalDate fecha=LocalDate.parse(sc.next());
 
+        sc.nextLine();
         System.out.println("escribe el rol del personaje");
-        String rol=sc.next();
+        String rol=sc.nextLine();
 
         Participa participa=new Participa(fecha,rol);
         participa.setId(id);
@@ -247,11 +252,12 @@ public class Main {
 
 
     public static Personaje creaPersonaje(Scanner sc){
+        sc.nextLine();
         System.out.println("introduce el nombre del personaje");
-        String nombre=sc.next();
+        String nombre=sc.nextLine();
 
         System.out.println("introduce el alias del personaje");
-        String alias=sc.next();
+        String alias=sc.nextLine();
 
         return new Personaje(nombre,alias,creaTraje(sc));
     }
@@ -269,8 +275,9 @@ public class Main {
 
 
     public static Habilidad creaHabilidad(Scanner sc){
+        sc.nextLine();
         System.out.println("introduce el nombre de la habilidad");
-        String nombre=sc.next();
+        String nombre=sc.nextLine();
 
         sc.nextLine();
         System.out.println("introduce la descripcion de la habilidad");

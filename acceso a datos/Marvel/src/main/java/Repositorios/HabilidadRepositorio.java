@@ -41,7 +41,6 @@ public class HabilidadRepositorio implements Repositorio<Habilidad>{
         session.merge(habilidadCambios);
         trx.commit();
         System.out.println("Todo bien");
-
     }
 
 

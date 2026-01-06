@@ -47,6 +47,6 @@ public class Participa {
 
     @Override
     public String toString(){
-        return personajeEvento.getId()+", "+eventoPersonaje.getId()+", "+fecha+", "+rol;
+        return eventoPersonaje.getId()+", "+fecha+", "+rol;
     }
 }
