@@ -71,11 +71,9 @@ public class Personaje {
     }
     @Override
     public String toString(){
-        return  id+"\n"+
-                nombre+"\n"+
-                alias+"\n"+
-                traje.toString()+"\n"+
-                habilidadesCadena()+
-                eventosCadena();
+        return  "datos personaje: "+id+nombre+alias+"\n"+
+                "datos traje: "+traje.toString()+"\n"+
+                "habilidades: "+"\n"+habilidadesCadena()+
+                "eventos: "+"\n"+eventosCadena();
     }
 }

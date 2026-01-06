@@ -183,12 +183,8 @@ public class Main {
         sc.nextLine();
         System.out.println("escribe el nombre de la persona que quiere modificar");
         String nombre=sc.nextLine();
-        Personaje personajeOR=repPersonaj.getPersonajePorNombre(nombre);
-
         Traje nuevoTraje=creaTraje(sc);
-        personajeOR.setTraje(nuevoTraje);
-
-        repPersonaj.modificar(personajeOR);
+        repPersonaj.modificarTraje(nombre,nuevoTraje);
     }
 
 
@@ -264,9 +260,8 @@ public class Main {
 
 
     public static Traje creaTraje(Scanner sc){
-
-        System.out.println("introduce la especificacion del traje");
         sc.nextLine();
+        System.out.println("introduce la especificacion del traje");
         String especificacion= sc.nextLine();
         Traje traj=new Traje(especificacion);
         repTraj.guardar(traj);

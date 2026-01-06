@@ -29,6 +29,7 @@ public class TrajeRepositorio implements Repositorio<Traje>{
         session.persist(t);
         trx.commit();
     }
+
     public Traje getTrajeporId(int id){
         Query query = session.createQuery("FROM Traje t WHERE t.id=:tra_id");
         query.setParameter("tra_id", id);

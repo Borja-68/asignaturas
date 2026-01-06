@@ -38,10 +38,10 @@ public class Evento {
     }
     @Override
     public String toString(){
-        return  id+"\n"+
-                nombre+"\n"+
-                lugar+"\n"+
-                personajesToString();
+        return  id+","+
+                nombre+","+
+                lugar;
+
     }
 }
 

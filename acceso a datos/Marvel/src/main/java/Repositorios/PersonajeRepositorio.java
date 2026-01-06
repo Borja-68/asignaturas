@@ -2,6 +2,7 @@ package Repositorios;
 
 
 import Entidades.Personaje;
+import Entidades.Traje;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
@@ -34,6 +35,16 @@ public class PersonajeRepositorio implements Repositorio<Personaje>{
         System.out.println((Personaje) query.getSingleResult());
     }
 
+    public void modificarTraje(String nombrePers, Traje traje){
+        Transaction trx = this.session.beginTransaction();
+        Query query = session.createQuery("FROM Personaje p WHERE p.nombre=:per_nomb");
+        query.setParameter("per_nomb", nombrePers);
+        Personaje personaje = (Personaje) query.getSingleResult();
+        personaje.setTraje(traje);
+        session.merge(personaje);
+        trx.commit();
+        System.out.println("Todo bien");
+    }
 
     public void borrar(Personaje personaje){
         Transaction trx = this.session.beginTransaction();
