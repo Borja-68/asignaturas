@@ -12,7 +12,6 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class Traje {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(columnDefinition = "Integer")
     private Integer id;
     @NonNull
@@ -22,7 +21,7 @@ public class Traje {
 
     @Override
     public String toString(){
-        return id+" "+especificacion+" "+heroe.getId();
+        return id+", "+especificacion+", "+heroe.getId();
     }
 
 }

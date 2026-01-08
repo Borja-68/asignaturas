@@ -15,7 +15,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class Evento {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(columnDefinition = "Integer")
     private Integer id;
     @NonNull
@@ -29,4 +28,20 @@ public class Evento {
     public void addPersonaje(Participa personaje){
         personajes.add(personaje);
     }
+
+    private String personajesToString(){
+        String resultado="";
+        for( Participa personaje: personajes){
+            resultado+=personaje.toString()+"\n";
+        }
+        return resultado;
+    }
+    @Override
+    public String toString(){
+        return  id+","+
+                nombre+","+
+                lugar;
+
+    }
 }
+

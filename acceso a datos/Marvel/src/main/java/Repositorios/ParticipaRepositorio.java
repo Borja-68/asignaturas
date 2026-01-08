@@ -5,6 +5,7 @@ import Entidades.Evento;
 import Entidades.Participa;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 
 public class ParticipaRepositorio implements Repositorio<Participa>{
@@ -21,6 +22,11 @@ public class ParticipaRepositorio implements Repositorio<Participa>{
         Transaction trx = this.session.beginTransaction();
         session.persist(t);
         trx.commit();
+    }
+
+    @Override
+    public void muestraId() {
+
     }
 
 }
