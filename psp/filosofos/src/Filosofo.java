@@ -11,6 +11,8 @@ public class Filosofo implements Runnable {
     private int tiempoEspera_3=400;
     private int tiempoExtraEspera=1000;
 
+    private static int usos=30;
+
     private int come=0;
     private int noCome=0;
 
@@ -52,7 +54,7 @@ public class Filosofo implements Runnable {
                 int espera_3=random.nextInt(tiempoEspera_3);
                 System.out.println("no pudo comer Filosofo "+filosofo+", pensando durante "+espera_3+" mseg");
                 noCome++;
-                System.out.println(noCome+"   "+come);
+
                 Thread.sleep(espera_3);
             }
 
@@ -61,7 +63,13 @@ public class Filosofo implements Runnable {
             }
 
         }
+        synchronized (this) {
+            if(usos==0)break;
+            usos--;
+        }
     }
+        System.out.println(usos);
+        System.out.println("Filosofo " + filosofo+"  no comió: "+noCome+"   comió: "+come);
 
     }
 
