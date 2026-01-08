@@ -6,6 +6,13 @@ import java.util.Random;
 public class Filosofo implements Runnable {
     public static Boolean[] cubiertos= {true,true,true,true,true};
     private int filosofo;
+    private int tiempoEspera_1=1000;
+    private int tiempoEspera_2=4000;
+    private int tiempoEspera_3=400;
+    private int tiempoExtraEspera=1000;
+
+    private int come=0;
+    private int noCome=0;
 
     public Filosofo(int filosofo){
         this.filosofo=filosofo;
@@ -19,26 +26,36 @@ public class Filosofo implements Runnable {
             if (cubiertos[filosofo] && cubiertos[getCubierto(filosofo)]) {
                 cubiertos[filosofo] = false;
                 cubiertos[getCubierto(filosofo)] = false;
-                for (Boolean valor:cubiertos){
-                    System.out.println(valor);
-                }
-                System.out.println("Filosofo " + filosofo + ", comiendo");
+
                 try {
-                    Thread.sleep((random.nextInt(1000)));
-                    System.out.println("Comí, Filosofo " + filosofo + ", pensando");
+                    int espera_1=random.nextInt(tiempoEspera_1);
+                    System.out.println("Filosofo " + filosofo + ", comiendo durante "+espera_1+" mseg");
+                    come++;
+                    Thread.sleep(espera_1);
+
+                    int espera_2=tiempoExtraEspera + random.nextInt(tiempoEspera_2);
+                    System.out.println("Comí, Filosofo " + filosofo + ", pensando durante "+espera_2+" mseg");
                     cubiertos[filosofo] = true;
                     cubiertos[getCubierto(filosofo)] = true;
-                    Thread.sleep((1000 + random.nextInt(4000)));
+                    Thread.sleep(espera_2);
+
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
             }
         }
         if(!cubiertos[filosofo] || !cubiertos[getCubierto(filosofo)]){
-            System.out.println("no pudo comer Filosofo "+filosofo+", pensando");
+
+
+
             try {
-                Thread.sleep((random.nextInt(400)));
+                int espera_3=random.nextInt(tiempoEspera_3);
+                System.out.println("no pudo comer Filosofo "+filosofo+", pensando durante "+espera_3+" mseg");
+                noCome++;
+                System.out.println(noCome+"   "+come);
+                Thread.sleep(espera_3);
             }
+
             catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
@@ -49,7 +66,7 @@ public class Filosofo implements Runnable {
     }
 
     private int getCubierto(int filosofo){
-        if(((cubiertos.length-1)-((cubiertos.length-1)-filosofo))==0)return (cubiertos.length-1);
-        else return (cubiertos.length-1)-((cubiertos.length-1)-filosofo);
+        if(((cubiertos.length-1)-((cubiertos.length-1)-filosofo+1))==-1)return 0;
+        else return (cubiertos.length-1)-((cubiertos.length-1)-filosofo+1);
     }
 }

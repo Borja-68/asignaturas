@@ -7,6 +7,7 @@ public class Main {
         for (int i=0; i<=1;i++){
             Thread hilo=new Thread(cuenta);
             hilo.start();
+
         }
     }
 }
