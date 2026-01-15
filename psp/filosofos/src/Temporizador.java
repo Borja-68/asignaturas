@@ -24,7 +24,13 @@ public class Temporizador extends Thread {
             throw new RuntimeException(e);
         }
         for (Thread hilo:hilos){
-                hilo.interrupt();
+
+            hilo.interrupt();
+            try {
+                hilo.join();
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
             }
 
     }
