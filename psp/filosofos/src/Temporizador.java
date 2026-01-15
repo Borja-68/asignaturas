@@ -3,7 +3,7 @@ import java.util.List;
 
 public class Temporizador extends Thread {
     private List<Filosofo> filosofos=new ArrayList<>();
-    private int tiempo=60000;
+    private int tiempo=10000;
 
     public Temporizador(ArrayList<Filosofo> filosofos){
         super();
