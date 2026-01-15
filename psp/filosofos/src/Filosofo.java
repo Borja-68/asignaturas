@@ -10,8 +10,7 @@ public class Filosofo implements Runnable {
     private int tiempoEspera_2=4000;
     private int tiempoEspera_3=400;
     private int tiempoExtraEspera=1000;
-
-    private static int usos=30;
+    public boolean salir=false;
 
     private int come=0;
     private int noCome=0;
@@ -22,55 +21,49 @@ public class Filosofo implements Runnable {
 
     @Override
     public void run() {
-    while(true){
-        Random random = new Random();
-        synchronized (this) {
-            if (cubiertos[filosofo] && cubiertos[getCubierto(filosofo)]) {
-                cubiertos[filosofo] = false;
-                cubiertos[getCubierto(filosofo)] = false;
+        try {
+            while (!salir) {
+                Random random = new Random();
+                synchronized (this) {
+                    if (cubiertos[filosofo] && cubiertos[getCubierto(filosofo)]) {
+                        cubiertos[filosofo] = false;
+                        cubiertos[getCubierto(filosofo)] = false;
 
-                try {
-                    int espera_1=random.nextInt(tiempoEspera_1);
-                    System.out.println("Filosofo " + filosofo + ", comiendo durante "+espera_1+" mseg");
-                    come++;
-                    Thread.sleep(espera_1);
+                        try {
+                            int espera_1 = random.nextInt(tiempoEspera_1);
+                            System.out.println("Filosofo " + filosofo + ", comiendo durante " + espera_1 + " mseg");
+                            come++;
+                            Thread.sleep(espera_1);
 
-                    int espera_2=tiempoExtraEspera + random.nextInt(tiempoEspera_2);
-                    System.out.println("Comí, Filosofo " + filosofo + ", pensando durante "+espera_2+" mseg");
-                    cubiertos[filosofo] = true;
-                    cubiertos[getCubierto(filosofo)] = true;
-                    Thread.sleep(espera_2);
+                            int espera_2 = tiempoExtraEspera + random.nextInt(tiempoEspera_2);
+                            System.out.println("Comí, Filosofo " + filosofo + ", pensando durante " + espera_2 + " mseg");
+                            cubiertos[filosofo] = true;
+                            cubiertos[getCubierto(filosofo)] = true;
+                            Thread.sleep(espera_2);
 
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
+                        } catch (InterruptedException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }
+                }
+                if (!cubiertos[filosofo] || !cubiertos[getCubierto(filosofo)]) {
+
+
+                    try {
+                        int espera_3 = random.nextInt(tiempoEspera_3);
+                        System.out.println("no pudo comer Filosofo " + filosofo + ", pensando durante " + espera_3 + " mseg");
+                        noCome++;
+
+                        Thread.sleep(espera_3);
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
+
                 }
             }
+        }catch (Exception e) {
+            System.out.println("Filosofo " + filosofo + "  no comió: " + noCome + "   comió: " + come);
         }
-        if(!cubiertos[filosofo] || !cubiertos[getCubierto(filosofo)]){
-
-
-
-            try {
-                int espera_3=random.nextInt(tiempoEspera_3);
-                System.out.println("no pudo comer Filosofo "+filosofo+", pensando durante "+espera_3+" mseg");
-                noCome++;
-
-                Thread.sleep(espera_3);
-            }
-
-            catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-
-        }
-        synchronized (this) {
-            if(usos==0)break;
-            usos--;
-        }
-    }
-        System.out.println(usos);
-        System.out.println("Filosofo " + filosofo+"  no comió: "+noCome+"   comió: "+come);
-
     }
 
     private int getCubierto(int filosofo){

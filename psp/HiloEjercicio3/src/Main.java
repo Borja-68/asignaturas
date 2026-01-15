@@ -5,7 +5,6 @@ public class Main {
         HiloThread hilo1=new HiloThread("1");
         HiloRunnable hilRun=new HiloRunnable("2",hilo1);
         Thread hilo2=new Thread(hilRun);
-
         hilo2.start();
     }
 }
