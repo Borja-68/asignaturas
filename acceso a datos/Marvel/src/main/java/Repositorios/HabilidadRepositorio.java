@@ -46,10 +46,14 @@ public class HabilidadRepositorio implements Repositorio<Habilidad>{
 
 
     public Habilidad getHabilidadPorId(int id){
-        Query query = session.createQuery("FROM Habilidad h WHERE h.id=:hab_id");
-        query.setParameter("hab_id", id);
-        return (Habilidad) query.getSingleResult();
-
+        try {
+            Query query = session.createQuery("FROM Habilidad h WHERE h.id=:hab_id");
+            query.setParameter("hab_id", id);
+            return (Habilidad) query.getSingleResult();
+        } catch (Exception e) {
+            System.out.println("id no existente, opercación no ejecutada");
+            throw new ArrayIndexOutOfBoundsException(String.valueOf(e));
+        }
     }
 
     @Override
@@ -63,9 +67,16 @@ public class HabilidadRepositorio implements Repositorio<Habilidad>{
 
 
     public Habilidad getHabilidadPorNombre(String nombre){
-        Query query = session.createQuery("FROM Habilidad h WHERE h.nombre=:hab_nombre");
-        query.setParameter("hab_nombre", nombre);
-        return (Habilidad) query.getSingleResult();
+        try {
+            Query query = session.createQuery("FROM Habilidad h WHERE h.nombre=:hab_nombre");
+            query.setParameter("hab_nombre", nombre);
+            return (Habilidad) query.getSingleResult();
+        } catch (Exception e) {
+            {
+                System.out.println("nombre no existente, opercación no ejecutada");
+                throw new ArrayIndexOutOfBoundsException(String.valueOf(e));
+            }
+        }
 
     }
 

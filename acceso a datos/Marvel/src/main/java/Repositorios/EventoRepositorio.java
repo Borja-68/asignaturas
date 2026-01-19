@@ -36,9 +36,14 @@ public class EventoRepositorio implements Repositorio<Evento>{
     }
 
     public Evento getEventoPorNombre(String nombre){
-        Query query = session.createQuery("FROM Evento e WHERE e.nombre=:ev_nombre");
-        query.setParameter("ev_nombre", nombre);
-        return (Evento) query.getSingleResult();
+        try {
+            Query query = session.createQuery("FROM Evento e WHERE e.nombre=:ev_nombre");
+            query.setParameter("ev_nombre", nombre);
+            return (Evento) query.getSingleResult();
+        } catch (Exception e) {
+            System.out.println("nombre introducido no existente, operación no ejecutada");
+            throw new ArrayIndexOutOfBoundsException(String.valueOf(e));
+        }
     }
 
     public void muestraNombre(){
