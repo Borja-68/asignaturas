@@ -3,6 +3,7 @@ enum Estado{dentro,fuera}
 public class Persona extends Thread {
     public int numPersona;
     public Estado situacion;
+    public Boolean funcionando=true;
 
     public Persona(int numPersona, Estado estado) {
         super();
@@ -11,8 +12,8 @@ public class Persona extends Thread {
     }
 
     @Override
-    public void run()  {
-        while (true) {
+    public void run() {
+        while (funcionando)
             synchronized (this) {
                     if (situacion == Estado.dentro) {
                         if (Jardin.puertaSalida) {
@@ -72,6 +73,9 @@ public class Persona extends Thread {
                     }
             }
         }
+
+        public void setFuncionandoFalse(){
+        this.funcionando=false;
+        }
     }
-}
 

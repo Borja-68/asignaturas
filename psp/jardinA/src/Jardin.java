@@ -21,11 +21,7 @@ public Jardin (){
             throw new RuntimeException(e);
         }
         for (Persona persona: listaPersonas){
-            try {
-                persona.interrupt();
-            } catch (InterruptedException e) {
-
-            }
+            persona.setFuncionandoFalse();
         }
     }
 }
