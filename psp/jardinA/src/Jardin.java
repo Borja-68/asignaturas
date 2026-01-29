@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Jardin extends Thread {
 
-    public static int personas= 95;
+    public static int personas= 100;
     public static boolean puertaEntrada=true;
     public static boolean puertaSalida=true;
     public ArrayList<Persona> listaPersonas= new ArrayList<>();

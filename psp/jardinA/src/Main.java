@@ -2,11 +2,11 @@
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        Persona per1=new Persona(1,Estado.fuera);
-        Persona per2=new Persona(2,Estado.fuera);
-        Persona per3=new Persona(3,Estado.fuera);
-        Persona per4=new Persona(4,Estado.fuera);
-        Persona per5=new Persona(5,Estado.fuera);
+        Persona per1=new Persona(1,Estado.dentro);
+        Persona per2=new Persona(2,Estado.dentro);
+        Persona per3=new Persona(3,Estado.dentro);
+        Persona per4=new Persona(4,Estado.dentro);
+        Persona per5=new Persona(5,Estado.dentro);
         Persona per6=new Persona(6,Estado.fuera);
         Persona per7=new Persona(7,Estado.fuera);
         Persona per8=new Persona(8,Estado.fuera);
