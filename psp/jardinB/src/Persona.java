@@ -20,7 +20,7 @@ public class Persona extends Thread {
                 int i = random.nextInt(Jardin.puertas.size());
                 if (situacion == Estado.dentro) {
                     if (Jardin.puertas.get(i)) {
-                        if (Jardin.personas < Jardin.personasMax) {
+                        if (Jardin.personas >0) {
                             Jardin.setXpuertaFalse(i);
                             System.out.println("saliendo puerta " + (i + 1) + " persona " + numPersona);
                             try {
@@ -33,6 +33,7 @@ public class Persona extends Thread {
                             situacion = Estado.fuera;
                             Jardin.setXpuertaTrue(i);
                         } else {
+                            System.out.println("no habia nadie para salir " + (i + 1) + " persona " + numPersona);
                             Jardin.addFallos();
                             try {
                                 Thread.sleep(1000);

@@ -15,6 +15,7 @@ public class Persona extends Thread {
             synchronized (this) {
                 if (situacion == Estado.dentro) {
                     if (Jardin.puertaSalida) {
+                        if (Jardin.personas>0){
                         Jardin.puertaSalida = false;
                         System.out.println("saliendo " + numPersona);
                         try {
@@ -26,7 +27,16 @@ public class Persona extends Thread {
                         Jardin.personas--;
                         situacion = Estado.fuera;
                         Jardin.puertaSalida = true;
-                    } else {
+                        } else {
+                                System.out.println(" no sali, no habia nadie " + numPersona);
+                                Jardin.fallos += 1;
+                                try {
+                                    Thread.sleep(1000);
+                                } catch (InterruptedException e) {
+                                    return;
+                                }
+                            }
+                    }else {
                         System.out.println(" no sali, puerta ocupada " + numPersona);
                         Jardin.fallos += 1;
                         try {
