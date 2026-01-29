@@ -6,15 +6,22 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner input=new Scanner(System.in);
-        System.out.println("introduce numero de puertas 1-4");
-        int puertas=input.nextInt();
-        input.nextLine();
+        int puertas=-1;
+        do {
+            System.out.println("introduce numero de puertas 1-4");
+             puertas = input.nextInt();
+            input.nextLine();
+        }while (puertas<0 || puertas>4);
+
         ArrayList<Boolean> puertasCrear=new ArrayList<>();
         for (int i=0;i<puertas;i++)puertasCrear.add(true);
 
         int personasMax=-1;
-            System.out.println("introduce numero de personas maximas 1-999");
+        do {
+            System.out.println("introduce numero de personas maximas 1-infinit");
             personasMax= input.nextInt();
+        }while (personasMax<=0);
+
 
         int personas=-1;
         do {
