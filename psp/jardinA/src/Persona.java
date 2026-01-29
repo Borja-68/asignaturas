@@ -11,58 +11,59 @@ public class Persona extends Thread {
 
     @Override
     public void run() {
-        while (true)
+        while (true) {
             synchronized (this) {
-                    if (situacion == Estado.dentro) {
-                        if (Jardin.puertaSalida) {
-                            Jardin.puertaSalida = false;
-                            System.out.println("saliendo " + numPersona);
-                            try {
-                                Thread.sleep(3000);
-                            } catch (InterruptedException e) {return;}
-                            System.out.println("salio " + numPersona);
-                            Jardin.puertaSalida = true;
-                            Jardin.personas--;
-                            situacion = Estado.fuera;
-                        } else {
-                            System.out.println(" no sali, puerta ocupada " + numPersona);
-                            Jardin.fallos+=1;
-                            try {
-                                Thread.sleep(1000);
-                            } catch (InterruptedException e) {return;}
+                if (situacion == Estado.dentro) {
+                    if (Jardin.puertaSalida) {
+                        Jardin.puertaSalida = false;
+                        System.out.println("saliendo " + numPersona);
+                        try {
+                            Thread.sleep(3000);
+                        } catch (InterruptedException e) {
+                            return;
+                        }
+                        System.out.println("salio " + numPersona);
+                        Jardin.personas--;
+                        situacion = Estado.fuera;
+                        Jardin.puertaSalida = true;
+                    } else {
+                        System.out.println(" no sali, puerta ocupada " + numPersona);
+                        Jardin.fallos += 1;
+                        try {
+                            Thread.sleep(1000);
+                        } catch (InterruptedException e) {
+                            return;
                         }
                     }
+                }
+            }
+            synchronized (this) {
+                if (situacion == Estado.fuera) {
+                    if (Jardin.puertaEntrada) {
+                        Jardin.puertaEntrada = false;
+                        System.out.println("entrando " + numPersona);
+                        try {
+                            Thread.sleep(3000);
+                        } catch (InterruptedException e) {
+                            return;
+                        }
+                        System.out.println("entrado " + numPersona);
+                        Jardin.personas++;
+                        situacion = Estado.dentro;
+                        Jardin.puertaEntrada = true;
 
-
-                    if (situacion == Estado.fuera) {
-                        if (Jardin.puertaEntrada) {
-                            if (Jardin.personas < 100) {
-                                Jardin.puertaEntrada = false;
-                                System.out.println("entrando " + numPersona);
-                                try {
-                                    Thread.sleep(3000);
-                                } catch (InterruptedException e) {return;}
-
-                                System.out.println("entrado " + numPersona);
-                                Jardin.puertaEntrada = true;
-                                Jardin.personas++;
-                                situacion = Estado.dentro;
-                            } else {
-                                System.out.println(" no entre, estaba lleno " + numPersona);
-                                Jardin.fallos+=1;
-                                try {
-                                    Thread.sleep(1000);
-                                } catch (InterruptedException e) {return;}
-                            }
-                        } else {
-                            System.out.println(" no entre, puerta ocupada " + numPersona);
-                            Jardin.fallos+=1;
-                            try {
-                                Thread.sleep(1000);
-                            } catch (InterruptedException e) {return;}
+                    } else {
+                        System.out.println(" no entre, puerta ocupada " + numPersona);
+                        Jardin.fallos += 1;
+                        try {
+                            Thread.sleep(1000);
+                        } catch (InterruptedException e) {
+                            return;
                         }
                     }
+                }
             }
         }
+    }
  }
 
