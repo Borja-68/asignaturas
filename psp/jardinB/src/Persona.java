@@ -7,6 +7,7 @@ public class Persona extends Thread {
     public Estado situacion;
     public Boolean funcionando=true;
     public Random random=new Random();
+
     public Persona(int numPersona, Estado estado) {
         super();
         this.numPersona = numPersona;

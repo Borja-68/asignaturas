@@ -28,9 +28,16 @@ public class Main {
             System.out.println("introduce numero de personas 1-100");
             personas=input.nextInt();
         }while (personas>personasMax || personas<0|| personas>100);
-
+        int z=0;
         ArrayList<Persona> personasCrear=new ArrayList<>();
-        for(int z=0;z<personasMax;z++)personasCrear.add(new Persona(z,Estado.fuera));
+        for(int i=0;i<personasMax/2;i++){
+            personasCrear.add(new Persona(z,Estado.fuera));
+            z++;
+        }
+        for(int x=0;x<personasMax/2;x++){
+            personasCrear.add(new Persona(z,Estado.dentro));
+            z++;
+        }
 
         Jardin jar=new Jardin(puertasCrear,personasCrear,personasMax,personas);
         jar.start();
