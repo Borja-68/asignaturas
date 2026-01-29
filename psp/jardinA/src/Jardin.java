@@ -6,6 +6,7 @@ public class Jardin extends Thread {
     public static boolean puertaEntrada=true;
     public static boolean puertaSalida=true;
     public ArrayList<Persona> listaPersonas= new ArrayList<>();
+    public static int fallos=0;
 
 public Jardin (){
     super.run();
@@ -21,7 +22,8 @@ public Jardin (){
             throw new RuntimeException(e);
         }
         for (Persona persona: listaPersonas){
-            persona.setFuncionandoFalse();
+            persona.interrupt();
         }
+        System.out.println("fallos: "+fallos);
     }
 }

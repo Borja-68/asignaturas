@@ -3,8 +3,6 @@ enum Estado{dentro,fuera}
 public class Persona extends Thread {
     public int numPersona;
     public Estado situacion;
-    public Boolean funcionando=true;
-
     public Persona(int numPersona, Estado estado) {
         super();
         this.numPersona = numPersona;
@@ -13,7 +11,7 @@ public class Persona extends Thread {
 
     @Override
     public void run() {
-        while (funcionando)
+        while (true)
             synchronized (this) {
                     if (situacion == Estado.dentro) {
                         if (Jardin.puertaSalida) {
@@ -21,20 +19,17 @@ public class Persona extends Thread {
                             System.out.println("saliendo " + numPersona);
                             try {
                                 Thread.sleep(3000);
-                            } catch (InterruptedException e) {
-                                throw new RuntimeException(e);
-                            }
+                            } catch (InterruptedException e) {return;}
                             System.out.println("salio " + numPersona);
                             Jardin.puertaSalida = true;
                             Jardin.personas--;
                             situacion = Estado.fuera;
                         } else {
                             System.out.println(" no sali, puerta ocupada " + numPersona);
+                            Jardin.fallos+=1;
                             try {
                                 Thread.sleep(1000);
-                            } catch (InterruptedException e) {
-                                throw new RuntimeException(e);
-                            }
+                            } catch (InterruptedException e) {return;}
                         }
                     }
 
@@ -46,36 +41,28 @@ public class Persona extends Thread {
                                 System.out.println("entrando " + numPersona);
                                 try {
                                     Thread.sleep(3000);
-                                } catch (InterruptedException e) {
-                                    throw new RuntimeException(e);
-                                }
+                                } catch (InterruptedException e) {return;}
 
                                 System.out.println("entrado " + numPersona);
                                 Jardin.puertaEntrada = true;
                                 Jardin.personas++;
                                 situacion = Estado.dentro;
                             } else {
-                                System.out.println(" no entre, eran gordos " + numPersona);
+                                System.out.println(" no entre, estaba lleno " + numPersona);
+                                Jardin.fallos+=1;
                                 try {
                                     Thread.sleep(1000);
-                                } catch (InterruptedException e) {
-                                    throw new RuntimeException(e);
-                                }
+                                } catch (InterruptedException e) {return;}
                             }
                         } else {
                             System.out.println(" no entre, puerta ocupada " + numPersona);
+                            Jardin.fallos+=1;
                             try {
                                 Thread.sleep(1000);
-                            } catch (InterruptedException e) {
-                                throw new RuntimeException(e);
-                            }
+                            } catch (InterruptedException e) {return;}
                         }
                     }
             }
         }
-
-        public void setFuncionandoFalse(){
-        this.funcionando=false;
-        }
-    }
+ }
 
