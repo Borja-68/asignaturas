@@ -1,0 +1,103 @@
+This XML file does not appear to have any style information associated with it. The document tree is shown below.
+<biblioteca>
+    <libros>
+        <libro publicacion="2008" edicion="1">
+            <titulo>XML en acción</titulo>
+            <autor>
+                <nombre>Erik</nombre>
+                <apellido>T. Ray</apellido>
+            </autor>
+            <editorial>Manning Publications</editorial>
+            <paginas>650</paginas>
+            <edicionElectronica>true</edicionElectronica>
+        </libro>
+        <libro publicacion="2014" edicion="2">
+            <titulo>XSLT Cookbook</titulo>
+            <autor>
+                <nombre>Sal</nombre>
+                <apellido>Mangano</apellido>
+            </autor>
+            <editorial>O'Reilly Media</editorial>
+            <paginas>580</paginas>
+        </libro>
+        <libro publicacion="2012">
+            <titulo>XML 1.1 Bible</titulo>
+            <autor>
+                <nombre>Eliot</nombre>
+                <apellido>Christian</apellido>
+            </autor>
+            <autor>
+                <nombre>Tommy</nombre>
+                <apellido>Weldon</apellido>
+            </autor>
+            <editorial>Wiley</editorial>
+            <paginas>800</paginas>
+        </libro>
+        <libro publicacion="2016">
+            <titulo>Introducción a XML y XML Schema</titulo>
+            <autor>
+                <nombre>Erik</nombre>
+                <apellido>Wilde</apellido>
+            </autor>
+            <editorial>Manning Publications</editorial>
+            <paginas>400</paginas>
+        </libro>
+        <libro publicacion="2015">
+            <titulo>XML: Visual QuickStart Guide</titulo>
+            <autor>
+                <nombre>Kevin</nombre>
+                <apellido>Howard Goldberg</apellido>
+            </autor>
+            <editorial>Peachpit Press</editorial>
+            <paginas>500</paginas>
+        </libro>
+        <libro publicacion="2011">
+            <titulo>XML and InDesign: Stylish Structure: Publishing XML with Adobe InDesign</titulo>
+            <autor>
+                <nombre>Claudia</nombre>
+                <apellido>McCue</apellido>
+            </autor>
+            <editorial>Adobe Press</editorial>
+            <paginas>350</paginas>
+            <edicionElectronica>true</edicionElectronica>
+        </libro>
+        <libro publicacion="2017" edicion="2">
+            <titulo>XML Schema: The W3C's Object-Oriented Descriptions for XML</titulo>
+            <autor>
+                <nombre>Eric</nombre>
+                <apellido>van der Vlist</apellido>
+            </autor>
+            <editorial>O'Reilly Media</editorial>
+            <paginas>450</paginas>
+        </libro>
+        <libro publicacion="2013">
+            <titulo>Beginning XML</titulo>
+            <autor>
+                <nombre>David</nombre>
+                <apellido>Hunter</apellido>
+            </autor>
+            <editorial>Wrox</editorial>
+            <paginas>550</paginas>
+            <edicionElectronica>true</edicionElectronica>
+        </libro>
+        <libro publicacion="2018" edicion="3">
+            <titulo>XQuery: Search Across a Variety of XML Data</titulo>
+            <autor>
+                <nombre>Priscilla</nombre>
+                <apellido>Walmsley</apellido>
+            </autor>
+            <editorial>O'Reilly Media</editorial>
+            <paginas>700</paginas>
+            <edicionElectronica>true</edicionElectronica>
+        </libro>
+        <libro publicacion="2019">
+            <titulo>XML Pocket Reference</titulo>
+            <autor>
+                <nombre>Simon</nombre>
+                <apellido>St. Laurent</apellido>
+            </autor>
+            <editorial>O'Reilly Media</editorial>
+            <paginas>150</paginas>
+        </libro>
+    </libros>
+</biblioteca>

@@ -119,7 +119,12 @@ public class Main {
         muestraIdsYNombre(repPersonaj);
         System.out.println("seleccione la id de la persona que quiere eliminar, numero");
         int id=sc.nextInt();
-        repPersonaj.borrar(repPersonaj.getPersonajePorId(id));
+        try {
+            Personaje personaje = repPersonaj.getPersonajePorId(id);
+            repPersonaj.borrar(personaje);
+        } catch (Exception ignored){
+
+        }
     }
 
 
@@ -127,6 +132,9 @@ public class Main {
         muestraIdsYNombre(repPersonaj);
         System.out.println("seleccione la id de la persona que quiere modificar, numero");
         int id=sc.nextInt();
+        try {
+
+
         Personaje personajeOR=repPersonaj.getPersonajePorId(id);
 
         System.out.println("introduce el nombre del personaje");
@@ -137,6 +145,9 @@ public class Main {
         String alias=sc.next();
         personajeOR.setAlias(alias);
         repPersonaj.modificar(personajeOR);
+        } catch (Exception ignored) {
+
+        }
     }
 
 
@@ -145,7 +156,11 @@ public class Main {
         sc.nextLine();
         System.out.println("seleccione la habilidad que quiere eliminar, nombre");
         String hab=sc.nextLine();
-        repHab.borrar(repHab.getHabilidadPorNombre(hab));
+        try {
+            Habilidad habilidad = repHab.getHabilidadPorNombre(hab);
+            repHab.borrar(habilidad);
+        } catch (Exception ignored) {
+        }
     }
 
 
@@ -153,11 +168,15 @@ public class Main {
         muestraIdsYNombre(repHab);
         System.out.println("seleccione la id de la habilidad que quiere modificar, numero");
         int id=sc.nextInt();
+        try{
         Habilidad habilidadOR=repHab.getHabilidadPorId(id);
         Habilidad habilidadCambiado=creaHabilidad(sc);
         habilidadOR.setNombre(habilidadCambiado.getNombre());
         habilidadOR.setDescripcion(habilidadCambiado.getDescripcion());
         repHab.modificar(habilidadOR);
+        } catch (Exception ignored) {
+
+        }
     }
 
 
@@ -166,25 +185,35 @@ public class Main {
         sc.nextLine();
         System.out.println("selecciona al heroe al que quieres darle la habilidad, escribe su nombre");
         String nombreHeroe= sc.nextLine();
-        Personaje personaje=repPersonaj.getPersonajePorNombre(nombreHeroe);
+        try {
+            Personaje personaje = repPersonaj.getPersonajePorNombre(nombreHeroe);
 
-        muestraIdsYNombre(repHab);
-        System.out.println("selecciona la habilidad que quieres darle, escribe su nombre");
-        String nombreHab= sc.nextLine();
-        Habilidad habilidad=repHab.getHabilidadPorNombre(nombreHab);
+            muestraIdsYNombre(repHab);
+            System.out.println("selecciona la habilidad que quieres darle, escribe su nombre");
+            String nombreHab = sc.nextLine();
+            Habilidad habilidad = repHab.getHabilidadPorNombre(nombreHab);
 
-        personaje.addHabilidad(habilidad);
-        repPersonaj.modificar(personaje);
+            personaje.addHabilidad(habilidad);
+            repPersonaj.modificar(personaje);
+        } catch (Exception ignored) {
+
+        }
     }
 
 
     public  static void modificaTrajePersonaje(Scanner sc){
-        muestraIdsYNombre(repPersonaj);
         sc.nextLine();
+        muestraIdsYNombre(repPersonaj);
+        try {
         System.out.println("escribe el nombre de la persona que quiere modificar");
         String nombre=sc.nextLine();
+        repPersonaj.getPersonajePorNombre(nombre);
         Traje nuevoTraje=creaTraje(sc);
-        repPersonaj.modificarTraje(nombre,nuevoTraje);
+
+            repPersonaj.modificarTraje(nombre, nuevoTraje);
+        } catch (Exception ignored) {
+
+        }
     }
 
 
@@ -193,29 +222,35 @@ public class Main {
         sc.nextLine();
         System.out.println("selecciona al heroe que atenderá el evento, escribe su nombre");
         String nombreHeroe=sc.nextLine();
-        Personaje personaje=repPersonaj.getPersonajePorNombre(nombreHeroe);
+        try {
+            Personaje personaje = repPersonaj.getPersonajePorNombre(nombreHeroe);
+            muestraIdsYNombre(repEven);
+            System.out.println("selecciona el evento que atiende, escribe su nombre");
+            String nombreEv = sc.nextLine();
+            Evento evento = repEven.getEventoPorNombre(nombreEv);
 
-        sc.nextLine();
-        muestraIdsYNombre(repEven);
-        System.out.println("selecciona el evento que atiende, escribe su nombre");
-        String nombreEv= sc.nextLine();
-        Evento evento=repEven.getEventoPorNombre(nombreEv);
+            ParticipaPK id = new ParticipaPK(personaje.getId(), evento.getId());
 
-        ParticipaPK id=new ParticipaPK(personaje.getId(),evento.getId());
+            LocalDate fecha;
+            while (true) {
+                System.out.println("escribe la fecha, como 2015-02-22");
+                fecha = LocalDate.parse(sc.next());
+                sc.nextLine();
+                break;
+            }
 
-        System.out.println("escribe la fecha, como 2015-02-22");
-        LocalDate fecha=LocalDate.parse(sc.next());
+            sc.nextLine();
+            System.out.println("escribe el rol del personaje");
+            String rol = sc.nextLine();
 
-        sc.nextLine();
-        System.out.println("escribe el rol del personaje");
-        String rol=sc.nextLine();
+            Participa participa = new Participa(fecha, rol);
+            participa.setId(id);
+            participa.setEvento(evento);
+            participa.setPersonaje(personaje);
 
-        Participa participa=new Participa(fecha,rol);
-        participa.setId(id);
-        participa.setEvento(evento);
-        participa.setPersonaje(personaje);
-
-        repParticip.guardar(participa);
+            repParticip.guardar(participa);
+        } catch (Exception ignored) {
+        }
     }
 
 
@@ -260,7 +295,6 @@ public class Main {
 
 
     public static Traje creaTraje(Scanner sc){
-        sc.nextLine();
         System.out.println("introduce la especificacion del traje");
         String especificacion= sc.nextLine();
         Traje traj=new Traje(especificacion);

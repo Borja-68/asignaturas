@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cb6f362b-8f53-435b-8b60-196c817ca52b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/baseDeDatos/baseDeDatos.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/baseFormula/baseFormula.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/baseFormula/src/gestorBD.java" beforeDir="false" afterPath="$PROJECT_DIR$/baseFormula/src/gestorBD.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cosas jav/contactos/contactos.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cosas jav/untitled/untitled.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cosas jav/untitled1/untitled1.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ejercicio502/ejercicio502.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../diseño interfazes/Calculator/nbactions.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../diseño interfazes/Calculator/nbactions.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../diseño interfazes/Calculator/src/main/java/com/mycompany/calculator/NewJFrame.form" beforeDir="false" afterPath="$PROJECT_DIR$/../diseño interfazes/Calculator/src/main/java/com/mycompany/calculator/ventana.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../diseño interfazes/Calculator/src/main/java/com/mycompany/calculator/NewJFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/../diseño interfazes/Calculator/src/main/java/com/mycompany/calculator/ventana.java" afterDir="false" />
-    </list>
+    <list default="true" id="cb6f362b-8f53-435b-8b60-196c817ca52b" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,24 +10,36 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 7
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Borja-68"
+  }
 }]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Borja-68/asignaturas",
+    "accountId": "4be4d8bb-d4b6-4a5c-a3ec-c63976f380f7"
+  }
+}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
   <component name="ProjectId" id="33nA6MYpCh3GE60SaADaujVFSwh" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/a24borjapp/Desktop/asignaturas/acceso a datos"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/a24borjapp/Desktop/asignaturas/acceso a datos&quot;
   }
-}]]></component>
+}</component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="cb6f362b-8f53-435b-8b60-196c817ca52b" name="Changes" comment="" />

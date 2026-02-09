@@ -1,4 +1,3 @@
-import java.util.Scanner;
 
 public class HiloThread extends Thread{
     private String nombre;
@@ -9,11 +8,12 @@ public class HiloThread extends Thread{
     }
 
     public void run(){
-        Scanner sc=new Scanner(System.in);
-        while (true){
-            System.out.println("Hilo "+nombre+" en ejecución, si quiere salir introduzca 0");
-            int numero=sc.nextInt();
-            if(numero==0)return;
+            System.out.print("Hilo ");
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
+        System.out.println(nombre+ " acaba");
     }
 }

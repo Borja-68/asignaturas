@@ -1,4 +1,3 @@
-import java.util.Scanner;
 
 public class HiloRunnable implements Runnable{
     private String nombre;
@@ -19,16 +18,14 @@ public class HiloRunnable implements Runnable{
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        Scanner sc=new Scanner(System.in);
-        while (true){
-            System.out.println("Hilo "+nombre+" en ejecución, si quiere salir introduzca 1");
-            int numero=sc.nextInt();
-            sc.nextLine();
-            if(numero==1){
-                sc.close();
-                return;
-            }
+            System.out.print("Hilo ");
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
-
+        System.out.println(nombre+" acaba");
     }
+
 }
+
