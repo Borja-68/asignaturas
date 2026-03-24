@@ -48,7 +48,7 @@ public class Main {
                 System.out.println(consultas);
                 opcion = pedirInt("introduzca opcion: ");
                 if(opcion>=1 && opcion<=7){
-                    consultaBaseX("","productos",opcion);
+                    consultaBaseX("productos",opcion);
                 }
                 else if(opcion>=8 && opcion<=17){
                     consultasMongoDB(opcion);
@@ -61,7 +61,7 @@ public class Main {
 
     }
     //acciones de BaseX
-    private static void consultaBaseX(String consulta,String nombreDB,Integer opcion){
+    private static void consultaBaseX(String nombreDB,Integer opcion){
         try(BaseXClient sesion = new BaseXClient("localhost", 1984, "admin", "abc123")) {
             sesion.execute("open productos");
             switch (opcion){

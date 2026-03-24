@@ -5,6 +5,5 @@
     <mapping directory="$PROJECT_DIR$/android/ejemplojwtintercept" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/android/intentemail" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/android/scaffold-example" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/apijson" vcs="Git" />
   </component>
 </project>
