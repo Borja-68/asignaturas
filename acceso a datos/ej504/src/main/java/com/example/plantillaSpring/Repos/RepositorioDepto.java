@@ -1,6 +1,6 @@
 package com.example.plantillaSpring.Repos;
 
-import com.example.plantillaSpring.Depto;
+import com.example.plantillaSpring.Entidades.Depto;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

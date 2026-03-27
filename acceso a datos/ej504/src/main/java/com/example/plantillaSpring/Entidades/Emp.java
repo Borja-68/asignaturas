@@ -1,4 +1,4 @@
-package com.example.plantillaSpring;
+package com.example.plantillaSpring.Entidades;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -7,7 +7,7 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDate;
-import java.util.Date;
+
 @Entity
 @Data
 @NoArgsConstructor
@@ -29,7 +29,6 @@ public class Emp {
     @NonNull
     @Column(columnDefinition = "decimal(7,2)")
     private double sal;
-    @NonNull
     @Column(columnDefinition = "decimal(7,2)")
     private double comision;
 
@@ -43,6 +42,13 @@ public class Emp {
     @OneToOne(mappedBy = "jefe")
     private Depto depJefe;
 
+    public Emp(String nomemp, String puesto, LocalDate feccont, double sal, double comision) {
+        this.noemp = nomemp;
+        this.puesto = puesto;
+        this.feccont = feccont;
+        this.sal = sal;
+        this.comision = comision;
+    }
 
     public void anadirDepto(Depto dep){
         this.depto=dep;
