@@ -1,4 +1,4 @@
-package com.example.plantillaSpring;
+package com.example.plantillaSpring.Entidades;
 
 import jakarta.persistence.*;
 import lombok.*;
